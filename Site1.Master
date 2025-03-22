@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="KrishiSadhana.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <!DOCTYPE html>
+                <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Home</title>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+                    <link rel="stylesheet" href="assets/css/style.css">
+                    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+                </head>
+
+                <body>
+                    <!-- Header top bar -->
+                    <div class="container-fluid p-0">
+                        <div class="top-bar">
+                            <div class="d-flex justify-content-end align-items-center p-0">
+                                <a href="#" class="text-white">Bulk order inquiries | </a>
+                                <a href="tel:180030002312" class="call-order">Missed call to order: 1800-3000-2312</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- header -->
+                    <header class="main-header">
+                        <div class="container-fluid d-flex justify-content-between align-items-center">
+                            <a href="Home.aspx">
+                                <img src="assets/Images/Logo.png" style="width: 160px; height: 70px;" alt="KrishiSadhana"></a>
+                            <div class="search-bar col-md-4">
+                                <input type="text" placeholder="Search..." class="form-control search-bar">
+                                <button class="search-btn-top">
+                                    <img src="assets/Images/Search.png" width="25px" alt=""></button>
+                            </div>  
+                            
+                            <div class="header-icons">
+                                <div class=""></div>
+                                <a href="Orders.aspx" class="icons text-secondary">
+                                    <img src="assets/Images/Truck.png" alt="" style="margin-bottom: 15px; height: 30px;" class="icons">
+                                    Track order</a>
+                                <a href="#" class="icons text-secondary">
+                                    <img src="assets/Images/Heart.png" alt="" style="margin-bottom: 7px; height: 30px;">
+                                    Wishlist</a>
+                                <a href="Login.aspx" class="icons text-secondary">
+                                    <img src="assets/Images/User Locked.png" alt="" style="margin-bottom: 15px; height: 30px;">
+                                    Login</a>
+                                <a href="Cart.aspx" class="icons text-secondary">
+                                    <img src="assets/Images/Shopping Trolley.png" alt="" style="margin-bottom: 7px; height: 25px;">
+                                    Cart</a>
+                            </div>
+
+                        </div>
+                </div>
+
+        </header>
+
+    <!-- Navbar -->
+
+        <nav class="navbar text-secondary mb-2">
+            <div class="container-fluid d-flex align-items-center justify-content-between nav">
+                <a href="Home.aspx" class="a-navbar">Home</a>
+                <a href="Crops.aspx" class="a-navbar">Crops</a>
+                <a href="Fruits.aspx" class="a-navbar">Fruits</a>
+                <a href="Vegeatbles.aspx" class="a-navbar">Vegetables</a>
+                <a href="DryFruits.aspx" class="a-navbar">Dry Fruits</a>
+                <a href="Seeds.aspx" class="a-navbar">Seeds</a>
+                <a href="Rental.aspx" class="a-navbar">Vehicles & Rental</a>
+                <a href="Consultation.aspx" class="a-navbar">Consultation</a>
+                <a href="Weather.aspx" class="a-navbar">Weather</a>
+                <a href="About.aspx" class="a-navbar">About us</a>
+                <a href="Contact.aspx" class="a-navbar">Contact us</a>
+            </div>
+        </nav>
+        </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+             <!-- Footer -->
+
+    <div class="ftr">
+        <div class="footer mt-2 p-4 d-flex">
+            <div class="col-md-6">
+                <img src="assets/Images/Logo.png" alt="" style="width: 160px; height: 70px;">
+                <p class="mt-3 f-desc">
+                    BigHaat is one of the largest and innovative Indian full-stack AgriTech platforms that is dedicated
+                    to revolutionizing the agricultural industry in India. The platform leverages technology to provide
+                    a wide range of solutions and services to farmers, helping them optimize their agricultural
+                    practices, increase productivity, and ultimately improve their livelihoods.
+                    <br><br>
+                    By integrating technology, data-driven insights, and a deep understanding of the agriculture sector,
+                    BigHaat aims to improve the overall agricultural ecosystem, increase farm yields, reduce input
+                    costs, and enhance the well-being of farmers across India. The platform plays a pivotal role in
+                    bridging the gap between technology and agriculture, ultimately contributing to the growth and
+                    sustainability of the agricultural sector.
+                </p>
+            </div>
+
+            <div class="col-md-3">
+                <h4 class="f-h mb-4">Quick Links</h4>
+                <ul class="quick-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Reach Us</a></li>
+                    <li><a href="#">Media Links</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Return & Refund Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-3">
+                <h4 class="f-h">Contact us</h4>
+                <p class="f-call mb-2">Call us:</p>
+                <a href="tel:180030002312" class="call-order">Missed call: 800-3000-2312</a>
+                <p class="f-call mt-3 mb-2">Whatsapp:</p>
+                <a href="" class="call-order">+91 9712802041</a>
+
+            </div>
+
+
+        </div>
+
+        <div class="scocial">
+            <a href=""><img src="assets/Images/insta.png" alt="" class="my-2 mx-2"></a>
+            <img src="assets/Images/fb.png" alt="" class="mx-2">
+            <img src="assets/Images/yt.png" alt="" class="mx-2">
+            <img src="assets/Images/ln.png" alt="" class="mx-2">
+        </div>
+        <hr class="hrf">
+        <div class="cpr-container">
+            <p class="cpr-text">Copyright All rights reserved</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+    
+</html>
+        </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
