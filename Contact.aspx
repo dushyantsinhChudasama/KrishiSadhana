@@ -53,12 +53,14 @@
     
         <!-- Right Side - Contact Form -->
         <div class="contact-form">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="tel" placeholder="Phone">
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">SUBMIT</button>
+            <%--<input type="text" placeholder="Name">--%>
+            <asp:TextBox ID="txtName" runat="server" placeholder="Name"/>
+            <asp:TextBox ID="txtEmail" runat="server" placeholder="Email"/>
+            <asp:TextBox ID="txtPhone" runat="server" placeholder="Phone"/>
+            <asp:TextBox ID="txtSubject" runat="server" placeholder="Subject"/>
+            <asp:TextBox ID="txtMessage" runat="server" placeholder="Message" TextMode="MultiLine" Rows="5"/>
+            
+            <asp:Button ID="btnSubmit" runat="server" Text="SUBMIT" CssClass="contact-button"/>
             <!-- Social Media Section -->
             <div class="social-section">
                 <h4>Connect With Us</h4>

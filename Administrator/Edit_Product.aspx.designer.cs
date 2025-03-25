@@ -11,7 +11,7 @@ namespace KrishiSadhana.Administrator
 {
 
 
-    public partial class Products
+    public partial class Edit_Product
     {
 
         /// <summary>
@@ -22,15 +22,6 @@ namespace KrishiSadhana.Administrator
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// ProductGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProductGrid;
 
         /// <summary>
         /// txtName control.
@@ -87,13 +78,13 @@ namespace KrishiSadhana.Administrator
         protected global::System.Web.UI.WebControls.TextBox txtSellprice;
 
         /// <summary>
-        /// Label8 control.
+        /// txtSlug control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.TextBox txtSlug;
 
         /// <summary>
         /// txtDiscount control.
@@ -105,24 +96,6 @@ namespace KrishiSadhana.Administrator
         protected global::System.Web.UI.WebControls.TextBox txtDiscount;
 
         /// <summary>
-        /// txtSlug control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSlug;
-
-        /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-
-        /// <summary>
         /// txtDesc control.
         /// </summary>
         /// <remarks>
@@ -132,12 +105,30 @@ namespace KrishiSadhana.Administrator
         protected global::System.Web.UI.WebControls.TextBox txtDesc;
 
         /// <summary>
-        /// btnSave control.
+        /// proImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Image proImage;
+
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
+
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

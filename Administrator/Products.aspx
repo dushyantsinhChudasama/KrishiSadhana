@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="KrishiSadhana.Administrator.Products" %>
+﻿<%@ Page Language="C#" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="KrishiSadhana.Administrator.Products" %>
 
 <!DOCTYPE html>
 
@@ -172,20 +172,19 @@
                 <div class="row">
                     <div class="col-lg-12 ms-auto p-4 overflow-hidden">
                         <h3 class="mb-4" style="font-weight: 500">All Products</h3>
-
-                        <div class="card border-0 shadow mb-4" style="width: 1200px; height: 440px; left: 0px; top: 0px;">
+                        <div class="card border-0 shadow mb-4" style="width: 1200px; height: 490px; left: 0px; top: 0px;">
                             <div>
                                 <div class="d-flex justify-content-end mb-4 mt-4 me-3">
                                     <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#crudModal">
-                                        <i class="bi bi-plus-square"></i> Add
+                                        <i class="bi bi-plus-square"></i>Add
                                     </button>
                                 </div>
 
                                 <%-- Adding Grid View --%>
-                                <div style="width: 1150px; height: 340px; overflow: auto; border: 1px solid silver; margin: 20px; margin-bottom: 10px;">
+                                <div style="width: 1150px; height: 380px; overflow: auto; border: 1px solid silver; margin: 20px; margin-bottom: 10px;">
 
-                                    <asp:GridView ID="ProductGrid" CellPadding="10" runat="server" AutoGenerateColumns="False" Height="400px" Width="1135px" BorderColor="Silver"
-                                        BorderWidth="1px" GridLines="Horizontal" CssClass="gridViewStyle" OnRowCommand="ProductGrid_RowCommand" PageSize="500">
+                                    <asp:GridView ID="ProductGrid" CellPadding="10" runat="server" AutoGenerateColumns="False" Height="460px" Width="1130px" BorderColor="Silver"
+                                        BorderWidth="1px" GridLines="Horizontal" CssClass="gridViewStyle" OnRowCommand="ProductGrid_RowCommand" PageSize="500" EnableViewState="true">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id">
                                                 <ItemTemplate>
@@ -200,20 +199,24 @@
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Image">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image1" runat="server" Height="59px" ImageUrl='<%# Eval("Image") %>' Width="66px" />
+                                                    <asp:Image ID="Image1" runat="server" Height="59px" ImageUrl='<%# ResolveUrl("~/Images/Product_Images/" + Eval("Image").ToString().Split("/"[0]).Last()) %>' Width="66px" />
+
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
-                                            
+
                                             <asp:TemplateField HeaderText="Category">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Ori_Pri">
@@ -221,25 +224,28 @@
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("Ori_Price") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Sell_pri">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Sell_Price") %>'></asp:Label>
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Sell_Price") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Disc">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Discount") %>'></asp:Label>
+                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("Discount") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Current_Qty">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Current_Qty") %>'></asp:Label>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("Current_Qty") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -247,30 +253,34 @@
 
                                             <asp:TemplateField HeaderText="Origin">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Origin") %>'></asp:Label>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Origin") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Slug">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Slug") %>'></asp:Label>
+                                                    <asp:Label ID="Label9" runat="server" Text='<%# Eval("Slug") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="DateAdd">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("DateAdded") %>'></asp:Label>
+                                                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("DateAdded") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="UpdatedAt">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("LastUpdated") %>'></asp:Label>
+                                                    <asp:Label ID="Label11" runat="server" Text='<%# Eval("LastUpdated") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </asp:TemplateField>
 
 
@@ -358,6 +368,13 @@
                                             </div>
                                         </div>
 
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <asp:TextBox ID="txtDesc" CssClass="form-control" Placeholder="Enter Product Description" runat="server" />
+                                            </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -376,13 +393,25 @@
             </div>
 
 
+
+            </div>
+
+
         </div>
     </form>
 
+    <!-- jQuery (Make sure this is included) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap 5 Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 </body>
 </html>

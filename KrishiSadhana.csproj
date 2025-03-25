@@ -74,6 +74,7 @@
     <Content Include="Administrator\Categoreis.aspx" />
     <Content Include="Administrator\Dashboard.aspx" />
     <Content Include="Administrator\Doctors.aspx" />
+    <Content Include="Administrator\Edit_Product.aspx" />
     <Content Include="Administrator\Login.aspx" />
     <Content Include="Administrator\Logout.aspx" />
     <Content Include="Administrator\Orders.aspx" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="Administrator\Doctors.aspx.designer.cs">
       <DependentUpon>Doctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Edit_Product.aspx.cs">
+      <DependentUpon>Edit_Product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Edit_Product.aspx.designer.cs">
+      <DependentUpon>Edit_Product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

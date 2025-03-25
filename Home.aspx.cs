@@ -21,5 +21,10 @@ namespace KrishiSadhana
             }
 
         }
+
+        protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }

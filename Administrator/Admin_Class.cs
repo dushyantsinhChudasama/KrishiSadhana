@@ -87,10 +87,34 @@ namespace KrishiSadhana.Administrator
 
         //for inserting Products
 
-        public void insertProducts(string name, int category, string ori_price, string selling_price, string dicsount, string qty, string origin, string slug, string image)
+        public void insertProducts(string name, string category, string ori_price, string selling_price, string dicsount, string qty, string origin, string slug, string image, string desc)
         {
             startCon();
-            cmd = new SqlCommand("Insert into Products_tbl (Name, Category, Ori_Price, Sell_Price, Discount, Current_Qty, Origin, Slug, Image) values ('" + name + "', '" + category + "', '" + ori_price + "', '" + selling_price + "', '" + dicsount + "', '" + qty + "', '" + origin + "', '" + slug + "', '" + image + "')", con);
+            cmd = new SqlCommand("Insert into Products_tbl (Name, Category, Ori_Price, Sell_Price, Discount, Current_Qty, Origin, Slug, Image, Description) values ('" + name + "', '" + category + "', '" + ori_price + "', '" + selling_price + "', '" + dicsount + "', '" + qty + "', '" + origin + "', '" + slug + "', '" + image + "', '"+desc+"')", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //fetching product details for Editing
+
+        public DataSet fetchProduct(int id)
+        {
+            startCon();
+            da = new SqlDataAdapter("Select * from Products_tbl where Id ='" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
+
+        //updating product details
+        public void updateProduct(string Name, string category, string ori_price, string selling_price, string discount, string qty, string origin, string slug, string desc, int id)
+        {
+            startCon();
+
+            //getting date to update value of LastUpdated column
+            DateTime currentDate = DateTime.Today;
+
+            cmd = new SqlCommand("Update Products_tbl set Name = '" + Name + "', Category = '" + category + "', Ori_Price = '" + ori_price + "', Sell_Price = '" + selling_price + "', Discount = '" + discount + "', Current_Qty = '" + qty + "', Origin = '" + origin + "', Slug = '" + slug + "', LastUpdated = '" + currentDate + "', Description = '" + desc + "' Where Id = '"+id+"'", con);
             cmd.ExecuteNonQuery();
         }
 

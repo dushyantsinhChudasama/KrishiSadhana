@@ -23,9 +23,13 @@ namespace KrishiSadhana.Administrator
         protected void Page_Load(object sender, EventArgs e)
         {
             Admin_Class.checkAdmin();
-            fillCategory();
             txtDiscount.ForeColor = System.Drawing.Color.Red;
-            displayProducts();
+
+            if (!IsPostBack)
+            {
+                fillCategory();
+                displayProducts();
+            }
         }
 
         //calculating total discount from ori_price and selling price and setting it to txtDiscount
@@ -56,15 +60,33 @@ namespace KrishiSadhana.Administrator
             }
         }
 
+
+        //for this method the method is downside of """Render""" which is completing method as because there is imagebutton
         protected void ProductGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            if(e.CommandName == "cmd_edt")
+            {
+                int productId = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("Edit_Product.aspx?ProductId=" + productId);
+                
+            }
+            else
+            {
+
+                int id = Convert.ToInt32(e.CommandArgument);
+                cmd = new SqlCommand("Delete From Products_tbl where Id = '" + id + "'", ac.startCon());
+                cmd.ExecuteNonQuery();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product Removed!');", true);
+
+            }
         }
 
         //Displaying products
         void displayProducts()
         {
-            da = new SqlDataAdapter("Select * From Products_tbl", ac.startCon());
+            //da = new SqlDataAdapter("select p.*, c.name as CatName FROM Products_tbl p JOIN Categories_tbl c ON p.Category = c.Id; ", ac.startCon());
+            da = new SqlDataAdapter("select * FROM Products_tbl", ac.startCon());
             ds = new DataSet();
             da.Fill(ds);
 
@@ -83,11 +105,39 @@ namespace KrishiSadhana.Administrator
             ViewState["Category_id"] = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
         }
 
+        //Uploding image and getting file name
+
+        void uploadImage()
+        {
+            if (FileUpload1.HasFile)
+            {
+                // Path to Images/Product_Images folder from Administrator
+                string folderPath = Server.MapPath("~/Images/Product_Images/");
+
+                // Check and create folder if it doesn't exist
+                if (!System.IO.Directory.Exists(folderPath))
+                {
+                    System.IO.Directory.CreateDirectory(folderPath);
+                }
+
+                // Save image to Product_Images folder
+                fileName = "Images/Product_Images/" + FileUpload1.FileName;
+                FileUpload1.SaveAs(System.IO.Path.Combine(folderPath, FileUpload1.FileName));
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Image Uploaded Successfully!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please select a product image!');", true);
+            }
+        }
+
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //inserting products
             uploadImage();
-            ac.insertProducts(txtName.Text, Convert.ToInt32(ViewState["Category_id"]), txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, fileName);
+            ac.insertProducts(txtName.Text, drpCategory.SelectedValue, txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, fileName, txtDesc.Text);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New Product Added!');", true);
 
             txtName.Text = null;
@@ -114,28 +164,7 @@ namespace KrishiSadhana.Administrator
             }
         }
 
-        //Uploding image and getting file name
 
-        void uploadImage()
-        {
-            if (FileUpload1.HasFile)
-            {
-                // Get the correct server path
-                string folderPath = Server.MapPath("~/Images/Product_Images/");
-                if (!System.IO.Directory.Exists(folderPath))
-                {
-                    System.IO.Directory.CreateDirectory(folderPath);
-                }
-
-                // Save the file
-                fileName = folderPath + FileUpload1.FileName;
-                FileUpload1.SaveAs(fileName);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please select product image!');", true);
-            }
-        }
 
 
         //checking and adding disccount after inserting values
@@ -163,6 +192,29 @@ namespace KrishiSadhana.Administrator
             {
                 txtDiscount.Text = "Enter both prices";
             }
+        }
+
+        protected override void Render(HtmlTextWriter writer)
+        {
+            foreach (GridViewRow row in ProductGrid.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    ImageButton editButton = (ImageButton)row.FindControl("ImageButton1");
+                    ImageButton deleteButton = (ImageButton)row.FindControl("ImageButton2");
+
+                    if (editButton != null)
+                    {
+                        Page.ClientScript.RegisterForEventValidation(ProductGrid.UniqueID, editButton.CommandArgument);
+                    }
+
+                    if (deleteButton != null)
+                    {
+                        Page.ClientScript.RegisterForEventValidation(ProductGrid.UniqueID, deleteButton.CommandArgument);
+                    }
+                }
+            }
+            base.Render(writer);
         }
     }
 }
