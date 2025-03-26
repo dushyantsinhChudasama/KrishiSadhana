@@ -143,8 +143,8 @@ body {
     text-decoration: none; /* Removes underline */
     color: inherit; /* Inherits text color from parent */
     display: block; /* Makes the link behave like a block element */
-    flex: 1 1 calc(20% - 20px); /* Adjusts width to fit 5 items per row */
-    max-width: calc(20% - 20px); /* Ensures exactly 5 items per row */
+    /*flex: 1 1 calc(20% - 20px);*/ /* Adjusts width to fit 5 items per row */
+    /*max-width: calc(20% - 20px); /* Ensures exactly 5 items per row */ 
 }
 
 .product-card-link:hover {
@@ -208,7 +208,7 @@ body {
 
 .container-pr{
     display: flex;
-    flex-wrap: wrap; /* Allows items to move to the next line */
+     /*flex-wrap: wrap;*/ /* Allows items to move to the next line */
     justify-content: space-between; /* Ensures even spacing */
     gap: 20px; /* Adds spacing between product cards */
     margin-left: 70px;
@@ -216,7 +216,7 @@ body {
 }
 
 .farmer-name {
-    font-size: 12px;
+    font-size: 29px;
     color: gray;
 }
 
@@ -549,13 +549,15 @@ body {
     padding: 15px;
     background-color: white;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure it uses the full available width */
+
+    margin: 20px auto; /* Centering the card */
 }
 
 .vehicle-img {
     width: 220px;
     height: auto;
     margin-right: 50px;
-
 }
 
 .vehicle-info {
@@ -571,7 +573,6 @@ body {
     font-size: 14px;
     color: gray;
 }
-
 
 .vehicle-details, .vehicle-price, .vehicle-location {
     font-size: 14px;
@@ -593,7 +594,12 @@ body {
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100xp;
+    width: 150px; /* Fixed size or adjust as needed */
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #1b5e20;
 }
 
 .wrapper {

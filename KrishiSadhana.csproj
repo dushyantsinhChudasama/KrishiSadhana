@@ -74,6 +74,7 @@
     <Content Include="Administrator\Categoreis.aspx" />
     <Content Include="Administrator\Dashboard.aspx" />
     <Content Include="Administrator\Doctors.aspx" />
+    <Content Include="Administrator\Edit_Doctor.aspx" />
     <Content Include="Administrator\Edit_Product.aspx" />
     <Content Include="Administrator\Login.aspx" />
     <Content Include="Administrator\Logout.aspx" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="Administrator\Doctors.aspx.designer.cs">
       <DependentUpon>Doctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Edit_Doctor.aspx.cs">
+      <DependentUpon>Edit_Doctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Edit_Doctor.aspx.designer.cs">
+      <DependentUpon>Edit_Doctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\Edit_Product.aspx.cs">
       <DependentUpon>Edit_Product.aspx</DependentUpon>
@@ -412,7 +420,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Doctor_Images\" />
     <Folder Include="Images\Product_Images\" />
+    <Folder Include="Images\Vehicle_Image\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -25,11 +25,22 @@ namespace KrishiSadhana
             return con;
         }
 
+
+        //Registering user
         public void insert(string name, string email, string gender, string phone, string password)
         {
+            startCon();
             cmd = new SqlCommand("insert into UserDetails_tbl (Name, Email, Gender,  Phone, Password) " +
                 "values ('" + name + "', '" + email + "', '"+gender+"', '" + phone + "', '" + password + "')", con);
 
+            cmd.ExecuteNonQuery();
+        }
+
+        //for contact detasils
+        public void insertUserQuery(string name, string email, string phone, string subject, string message)
+        {
+            startCon();
+            cmd = new SqlCommand("Insert into User_Queries_tbl (Name, Email, Phone, Subject, Message) values('" + name + "', '" + email + "', '" + phone + "', '" + subject + "', '" + message + "')", con);
             cmd.ExecuteNonQuery();
         }
 

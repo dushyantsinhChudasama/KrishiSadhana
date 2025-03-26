@@ -10,217 +10,37 @@
 
     <!-- Products -->
 
-    <div class="container-pr d-flex">
+    <!-- Products -->
 
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
+    <div class="container-pr d-flex mt-4">
 
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
+        <%-- Data list for displaying products --%>
 
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
+            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="3" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
+                <ItemTemplate>
+                    <div class="product-card">
+                        <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
+                        <%-- Add to wishlist code here --%>
+                        <span class="wishlist-icon"></span>
+                        <img src='<%# Eval("Image") %>' alt="Product Image" class="product-img">
+                        <div class="product-name"><%# Eval("Name") %></div>
+                        
+                        <div class="price-section">
+                            <span class="old-price">
+                                <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">
+                                ₹<%# Eval("Ori_Price") %></span>
+                            <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
+                        </div>
+                        <div class="location">
+                            <img src="assets/Images/Location.png" style="height: 25px;">
+                            <%# Eval("Origin") %>
+                        </div>
+                        <asp:Button ID="btnView" CssClass="view-btn" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" />
+                        <asp:Button ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" />
+                    </div>
+                </ItemTemplate>
+            </asp:DataList>
 
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="product-card-link">
-            <div class="product-card">
-                <span class="discount-badge">10% Off</span>
-                <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                <div class="product-name">Product Name</div>
-                <div class="farmer-name">Farmer Name</div>
-                <div class="price-section">
-                    <span class="old-price">
-                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                    </span>
-                    <span>₹100 / Per kg</span>
-                </div>
-                <div class="location">
-                    <img src="assets/Images/Location.png" style="height: 25px;"> Rajkot, Gujarat
-                </div>
-            </div>
-        </a>    
-        
 
     </div>
 

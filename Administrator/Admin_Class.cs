@@ -118,5 +118,40 @@ namespace KrishiSadhana.Administrator
             cmd.ExecuteNonQuery();
         }
 
+        //inserting doctor
+        public void insertDoctor(string name, string expe, string special, string study, string city, string state, string image)
+        {
+            startCon();
+
+            cmd = new SqlCommand("Insert into Doctors_tbl (Name, Current_experience, Specialization, Study, City, State, Image) values ('" + name + "', '" + expe + "', '" + special + "', '" + study + "', '" + city + "', '" + state + "', '" + image + "')", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //fetching details of doctors
+        public DataSet fetchDoctor(int id)
+        {
+            startCon();
+            da = new SqlDataAdapter("Select * from Doctors_tbl where Id = '" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
+
+        public void updateDoctor(string name, string expe, string special, string study, string city, string state, int id)
+        {
+            startCon();
+            cmd = new SqlCommand("Update Doctors_tbl set Name = '" + name + "', Current_experience = '" + expe + "', Specialization = '" + special + "', Study = '" + study + "', City = '" + city + "', State = '" + state + "' where Id = '" + id + "'", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //inserting vehicle
+        public void insertVehicle(string name, string company, string product, string rent, string city, string state, string image)
+        {
+            startCon();
+            cmd = new SqlCommand("Insert into Vehicles_tbl (Name, Company, Product, Rent_Per_Day, City, State, Image) values ('" + name + "', '" + company + "', '" + product + "', '" + rent + "', '" + city + "', '" + state + "', '" + image + "')", con);
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

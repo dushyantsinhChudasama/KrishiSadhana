@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Rental.aspx.cs" Inherits="KrishiSadhana.Rental" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    
+
     <!-- linear Banner -->
 
     <div class="banner mb-4">
@@ -11,29 +12,43 @@
 
     <div class="container-vh">
         <div class="search-bar-vh">
-            <input type="text" placeholder="Enter Type">
-            <input type="text" placeholder="Enter State">
-            <input type="text" placeholder="Enter City">
-            <button class="search-btn">Search</button>
+
+            <asp:TextBox ID="txtType" runat="server" placeholder="Enter Type" />
+
+            <asp:TextBox ID="txtCity" runat="server" placeholder="Enter City" />
+
+            <asp:TextBox ID="txtState" runat="server" placeholder="Enter State" />
+
+            <asp:Button ID="btnSearch" CssClass="search-btn" runat="server" Text="Button" />
         </div>
-    
-        <div class="vehicle-card">
-            <img src="assets/Images/Vehicle.png" alt="Vehicle Image" class="vehicle-img">
-            <div class="vehicle-info">
-                <h3 class="vehicle-name">Vehicle Name</h3>
-                <p class="farmer-name">Farmer name</p>
-                <p class="vehicle-details">
-                    <img src="assets/Images/Porduct-rent.png" alt="₹"  style="height: 20px; width: 30px;"> Wheat, Rice, Cotton
-                </p>
-                <p class="vehicle-price">
-                    <img src="assets/Images/Rupee.png" alt="₹" height="40px" style="height: 30px; width: 30px;"> 10000/day
-                </p>
-                <p class="vehicle-location">
-                    <img src="assets/Images/Location.png" alt="Location" height="40px" style="height: 30px; width: 30px;"> Rajkot, Gujarat
-                </p>
-            </div>
-            <button class="book-btn">Book Vehicle</button>
-        </div>
+
+        <asp:DataList ID="dlVehicles" runat="server" Width="830">
+            <ItemTemplate>
+                <div class="vehicle-card">
+                    
+                        <span class="wishlist-icon"></span>
+                        <img src='<%# Eval("Image") %>' alt="Vehicle Image" class="vehicle-img">
+                    <div class="vehicle-info">
+                        <h3 class="vehicle-name"><%# Eval("Name") %></h3>
+                        <p class="farmer-name"><%# Eval("Company") %></p>
+                        <p class="vehicle-details">
+                            <img src="assets/Images/Porduct-rent.png" alt="₹" style="height: 20px; width: 30px;">
+                            <%# Eval("Product") %>
+                        </p>
+                        <p class="vehicle-price">
+                            <img src="assets/Images/Rupee.png" alt="₹" style="height: 30px; width: 30px;">
+                            <%# Eval("Rent_Per_Day") %>/day
+                        </p>
+                        <p class="vehicle-location">
+                            <img src="assets/Images/Location.png" alt="Location" style="height: 30px; width: 30px;">
+                            <%# Eval("City") %>, <%# Eval("State") %>
+                        </p>
+                    </div>
+                    <asp:Button ID="btnBook" runat="server" CssClass="book-btn" Text="Book Vehicle" CommandArgument='<%# Eval("Id") %>' />
+                </div>
+            </ItemTemplate>
+        </asp:DataList>
+
     </div>
 </asp:Content>
 

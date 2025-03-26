@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Categoreis.aspx.cs" Inherits="KrishiSadhana.Administrator.Categoreis" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit_Doctor.aspx.cs" Inherits="KrishiSadhana.Administrator.Edit_Doctor" %>
 
 <!DOCTYPE html>
 
@@ -137,10 +137,16 @@
             top: 0;
             z-index: 10;
         }
+
+        .buttons{
+
+        }
     </style>
 </head>
+
 <body>
-    <form id="form1" runat="server">
+
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <!-- Script Manager Inside Form -->
         <asp:ScriptManager runat="server"></asp:ScriptManager>
 
@@ -155,11 +161,11 @@
             <div class="sidebar d-flex flex-column p-3">
                 <h4 class="mb-4 text-light">ADMIN PANEL</h4>
                 <a href="Dashboard.aspx">Dashboard</a>
-                <a href="Categoreis.aspx" class="active">Categories</a>
-                <a href="Products.aspx">Products</a>
+                <a href="Categoreis.aspx">Categories</a>
+                <a href="Products.aspx" >Products</a>
                 <a href="Orders.aspx">Orders</a>
                 <a href="Vehicles_Orders.aspx">Vehicles Orders</a>
-                <a href="Doctors.aspx">Doctors</a>
+                <a href="Doctors.aspx" class="active">Doctors</a>
                 <a href="User_Queries.aspx">User Queries</a>
                 <a href="Vehicles.aspx">Vehicles</a>
                 <a href="Users.aspx">Users</a>
@@ -169,46 +175,64 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 ms-auto p-4 overflow-hidden">
-                        <h3 class="mb-4" style="font-weight: 500">Categories</h3>
-
-                        <div class="card border-0 shadow mb-4" style="width: 1050px; height: 440px">
-                            <div>
-                                <div class="d-flex justify-content-end mb-4 mt-4 me-3">
-                                    <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#crudModal">
-                                        <i class="bi bi-plus-square"></i>Add
-                                    </button>
-                                </div>
-
-                              
+                        <h3 class="mb-4" style="font-weight: 500">Edit Doctor : <asp:Label runat="server" Text="ProductName"></asp:Label></h3>
+                        <div class="card border-0 shadow mb-4" style="width: 1200px; height: 530px; left: 0px; top: 0px;">
+                           
 
                                 <%-- Adding Grid View --%>
-                                <div style="width: 1000px; height: 340px; overflow: auto; border: 1px solid silver; margin: 20px; margin-bottom: 10px;">
+                                <div style="width: 1150px; height: 540px; overflow: auto; border: 1px solid silver; margin: 20px; margin-bottom: 10px; padding-top:30px; padding-bottom:50px; padding-left:20px; padding-right:20px">
 
-                                    <asp:GridView ID="CategoryGrid" CellPadding="10"  runat="server" AutoGenerateColumns="False" Height="400px" Width="980px" BorderColor="Silver"
-                                        BorderWidth="1px" GridLines="Horizontal" CssClass="gridViewStyle" OnRowCommand="CategoryGrid_RowCommand" PageSize="500">
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="Id">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
-                                                </ItemTemplate>
-                                                <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Name">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-                                                </ItemTemplate>
-                                                <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="600px" />
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Action">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_dlt" OnCommand="LinkButton1_Command" ForeColor="Red">Delete
-                                                    </asp:LinkButton>
-                                                </ItemTemplate>
-                                                <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="600px" />
-                                                <ItemStyle Width="200px" />
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
+                                    <div class="container">
+                                        <!-- Form Fields -->
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <div class="mb-1">Doctor Name</div>
+                                                <asp:TextBox ID="txtName" CssClass="form-control" Placeholder="Enter name" runat="server" />
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-1">Current Experience</div>
+                                                <asp:TextBox ID="txtExperience" CssClass="form-control" Placeholder="Enter name" runat="server" />
+                                                
+                                            </div>
+                                        </div>
+
+                                        <%-- second row --%>
+
+                                         <div class="row mb-4">
+                                            <div class="col-md-6">
+                                        <div class="mb-1">Specialization</div>
+                                                <asp:TextBox ID="txtSpecialization" CssClass="form-control" Placeholder="Enter Total Quantity" runat="server" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-1">Study</div>
+                                                <asp:TextBox ID="txtStudy" CssClass="form-control" Placeholder="Enter Product Origin" runat="server" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <div class="mb-1">Ctiy</div>
+                                                <asp:TextBox ID="txtCity" CssClass="form-control" Placeholder="Enter Original Price" runat="server"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-1">State</div>
+                                                <asp:TextBox ID="txtState" CssClass="form-control" Placeholder="Enter Selling Price" runat="server"/>
+                                            </div>
+                                        </div>
+
+                                         <div class="row mb-1">
+                                            <div class="col-md-6">
+                                                <div class="mb-1">Doctor Image</div>
+                                                <asp:Image ID="docImage" runat="server" Height="200px" Width="200px" />
+                                            </div>
+                                            <div class="col-md-6 mt-4 d-flex align-items-center">
+                                                <asp:Button ID="btnUpdate" Text ="Update" CssClass="mx-4 btn btn-success" runat="server" OnClick="btnUpdate_Click"/>
+                                                <asp:Button ID="btnCancel" Text ="Calcel" CssClass="mx-4 btn btn-secondary" runat="server" OnClick="btnCancel_Click"/>
+
+                                            </div>
+                                        </div>
+
 
                                 </div>
 
@@ -219,39 +243,23 @@
                 </div>
             </div>
 
-            <!-- Modal Section -->
-            <div class="modal fade" id="crudModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel">Add Category</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="txtName" class="form-label">Name</label>
-                                        <asp:TextBox ID="txtName" CssClass="form-control" runat="server" />
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button ID="btnSave" Text="Save" CssClass="btn btn-success" OnClick="btnSave_Click" runat="server" />
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                </div>
-            </div>
+            
+
         </div>
     </form>
 
-
+    <!-- jQuery (Make sure this is included) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap 5 Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 </body>
 </html>

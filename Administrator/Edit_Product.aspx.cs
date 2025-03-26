@@ -109,7 +109,7 @@ namespace KrishiSadhana.Administrator
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Peoducts.aspx");
+            Response.Redirect("Products.aspx");
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

@@ -60,7 +60,11 @@
             <asp:TextBox ID="txtSubject" runat="server" placeholder="Subject"/>
             <asp:TextBox ID="txtMessage" runat="server" placeholder="Message" TextMode="MultiLine" Rows="5"/>
             
-            <asp:Button ID="btnSubmit" runat="server" Text="SUBMIT" CssClass="contact-button"/>
+            <br />
+            <asp:Label ID="lblMessage" runat="server" Text="Messge Label" ForeColor="Red"></asp:Label>
+            <br />
+            
+            <asp:Button ID="btnSubmit" runat="server" Text="SUBMIT" CssClass="contact-button" OnClick="btnSubmit_Click"/>
             <!-- Social Media Section -->
             <div class="social-section">
                 <h4>Connect With Us</h4>
