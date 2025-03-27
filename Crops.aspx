@@ -16,7 +16,7 @@
 
         <%-- Data list for displaying products --%>
 
-            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="3" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
+            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="1" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
                 <ItemTemplate>
                     <div class="product-card">
                         <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
@@ -31,12 +31,16 @@
                                 ₹<%# Eval("Ori_Price") %></span>
                             <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
                         </div>
-                        <div class="location">
+                        <div class="location mb-4">
                             <img src="assets/Images/Location.png" style="height: 25px;">
                             <%# Eval("Origin") %>
                         </div>
                         <asp:Button ID="btnView" CssClass="view-btn" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" />
+                        <%--<asp:LinkButton ID="btnView" CssClass="view-btn mb-4" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' runat="server">View Product</asp:LinkButton>--%>
+                        <br />
                         <asp:Button ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" />
+                        <%--<asp:LinkButton ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' runat="server">Add to Cart</asp:LinkButton>--%>
+
                     </div>
                 </ItemTemplate>
             </asp:DataList>
