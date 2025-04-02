@@ -16,7 +16,7 @@
 
         <%-- Data list for displaying products --%>
 
-            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="3" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
+            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
                 <ItemTemplate>
                     <div class="product-card">
                         <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
@@ -35,14 +35,25 @@
                             <img src="assets/Images/Location.png" style="height: 25px;">
                             <%# Eval("Origin") %>
                         </div>
-                        <asp:Button ID="btnView" CssClass="view-btn" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" />
-                        <asp:Button ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" />
+
+                         <div style="text-align: center;">
+                            <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click">View Product</asp:LinkButton>
+                            <br />
+                            <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click">Add to Cart</asp:LinkButton>
+                        </div>
+
                     </div>
                 </ItemTemplate>
             </asp:DataList>
 
 
     </div>
+
+     <br />
+    <br />
+    <asp:LinkButton ID="btnPrev" CssClass="prev-btn" runat="server" OnClick="btnPrev_Click">Previous</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
+    <asp:LinkButton ID="btnNext" runat="server" CssClass="next-btn" OnClick="btnNext_Click">Next</asp:LinkButton>
 
 
 </asp:Content>

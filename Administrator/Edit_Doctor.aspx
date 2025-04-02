@@ -221,6 +221,13 @@
                                             </div>
                                         </div>
 
+                                          <div class="row mb-4">
+                                              <div class="col-md-6">
+                                                <div class="mb-1">Product Image</div>
+                                                <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+                                            </div>
+                                            </div>
+
                                          <div class="row mb-1">
                                             <div class="col-md-6">
                                                 <div class="mb-1">Doctor Image</div>

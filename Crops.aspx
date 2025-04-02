@@ -12,41 +12,48 @@
 
     <!-- Products -->
 
-    <div class="container-pr d-flex mt-4">
+<div class="container-pr d-flex mt-4">
 
-        <%-- Data list for displaying products --%>
+    <%-- Data list for displaying products --%>
 
-            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="1" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
-                <ItemTemplate>
-                    <div class="product-card">
-                        <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
-                        <%-- Add to wishlist code here --%>
-                        <span class="wishlist-icon"></span>
-                        <img src='<%# Eval("Image") %>' alt="Product Image" class="product-img">
-                        <div class="product-name"><%# Eval("Name") %></div>
-                        
-                        <div class="price-section">
-                            <span class="old-price">
-                                <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">
-                                ₹<%# Eval("Ori_Price") %></span>
-                            <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
-                        </div>
-                        <div class="location mb-4">
-                            <img src="assets/Images/Location.png" style="height: 25px;">
-                            <%# Eval("Origin") %>
-                        </div>
-                        <asp:Button ID="btnView" CssClass="view-btn" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" />
-                        <%--<asp:LinkButton ID="btnView" CssClass="view-btn mb-4" runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' runat="server">View Product</asp:LinkButton>--%>
-                        <br />
-                        <asp:Button ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" />
-                        <%--<asp:LinkButton ID="btnCart" CssClass="cart-btn" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' runat="server">Add to Cart</asp:LinkButton>--%>
+    <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged" OnItemCommand="dataListCrops_ItemCommand">
+        <ItemTemplate>
+            <div class="product-card">
+                <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
+                <%-- Add to wishlist code here --%>
+                <span class="wishlist-icon"></span>
+                <img src='<%# Eval("Image") %>' alt="Product Image" class="product-img">
+                <div class="product-name"><%# Eval("Name") %></div>
+                
+                <div class="price-section">
+                    <span class="old-price">
+                        <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">
+                        ₹<%# Eval("Ori_Price") %></span>
+                    <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
+                </div>
+                <div class="location mb-4">
+                    <img src="assets/Images/Location.png" style="height: 25px;">
+                    <%# Eval("Origin") %>
+                </div>
+                
+                <div style="text-align: center;">
+                    <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" CommandName="cmd_view"></asp:LinkButton>
+                    <br />
+                    <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" CommandName="cmd_cart"></asp:LinkButton>
+                </div>
 
-                    </div>
-                </ItemTemplate>
-            </asp:DataList>
+            </div>
+        </ItemTemplate>
+    </asp:DataList>
+
+</div>
 
 
-    </div>
+    <br />
+    <br />
+    <asp:LinkButton ID="btnPrev" CssClass="prev-btn" runat="server" OnClick="btnPrev_Click">Previous</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
+    <asp:LinkButton ID="btnNext" runat="server" CssClass="next-btn" OnClick="btnNext_Click">Next</asp:LinkButton>
 
 </asp:Content>
 
@@ -84,18 +91,23 @@
                         <img src="assets/Images/Search.png" width="25px" alt="">
                     </button>
                 </div>
-                <div class="header-icons">
+                   <div class="header-icons">
                     <div class="">
                     </div>
                     <a href="Orders.aspx" class="icons text-secondary">
-                        <img src="assets/Images/Truck.png" alt="" style="margin-bottom: 15px; height: 30px;" class="icons">
+                        <img src="assets/Images/Truck.png" alt=""
+                            style="margin-bottom: 15px; height: 30px;" class="icons">
                         Track order</a> <a href="#" class="icons text-secondary">
-                            <img src="assets/Images/Heart.png" alt="" style="margin-bottom: 7px; height: 30px;">
-                            Wishlist</a> <a href="Login.aspx" class="icons text-secondary">
-                                <img src="assets/Images/User Locked.png" alt="" style="margin-bottom: 15px; height: 30px;">
-                                Login</a> <a href="Cart.aspx" class="icons text-secondary">
-                                    <img src="assets/Images/Shopping Trolley.png" alt="" style="margin-bottom: 7px; height: 25px;">
-                                    Cart</a>
+                            <img src="assets/Images/Heart.png" alt=""
+                                style="margin-bottom: 7px; height: 30px;">
+                            Wishlist</a>
+                    <a href="Login.aspx" class="icons text-secondary">
+                        <img src="assets/Images/User Locked.png" alt=""
+                            style="margin-bottom: 15px; height: 30px;">
+                        <asp:Label ID="lblName" runat="server" Text="Login"></asp:Label></a> <a href="Cart.aspx" class="icons text-secondary">
+                            <img src="assets/Images/Shopping Trolley.png" alt=""
+                                style="margin-bottom: 7px; height: 25px;">
+                            Cart</a>
                 </div>
             </div>
             </div>

@@ -21,6 +21,14 @@ namespace KrishiSadhana.assets.css
         protected void Page_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
+            if (Session["user"] != null && Session["user"].ToString() != "")
+            {
+                lblName.Text = Session["user"].ToString();
+            }
+            else
+            {
+                lblName.Text = "Login";
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

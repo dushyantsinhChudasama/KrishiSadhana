@@ -11,7 +11,14 @@ namespace KrishiSadhana
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["user"] != null && Session["user"].ToString() != "")
+            {
+                lblName.Text = Session["user"].ToString();
+            }
+            else
+            {
+                lblName.Text = "Login";
+            }
         }
     }
 }

@@ -184,7 +184,7 @@
                                 <div style="width: 1150px; height: 380px; overflow: auto; border: 1px solid silver; margin: 20px; margin-bottom: 10px;">
 
                                     <asp:GridView ID="ProductGrid" CellPadding="10" runat="server" AutoGenerateColumns="False" Height="460px" Width="1130px" BorderColor="Silver"
-                                        BorderWidth="1px" GridLines="Horizontal" CssClass="gridViewStyle" OnRowCommand="ProductGrid_RowCommand" PageSize="500" EnableViewState="true">
+                                        BorderWidth="1px" GridLines="Horizontal" CssClass="gridViewStyle" OnRowCommand="ProductGrid_RowCommand" PageSize="500" EnableViewState="true" OnSelectedIndexChanged="ProductGrid_SelectedIndexChanged">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id">
                                                 <ItemTemplate>
@@ -213,7 +213,7 @@
 
                                             <asp:TemplateField HeaderText="Category">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("CategoryName") %>'></asp:Label>
                                                 </ItemTemplate>
                                                 <HeaderStyle CssClass="sticky-header" BackColor="#212529" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

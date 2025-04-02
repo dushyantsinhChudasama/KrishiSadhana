@@ -15,7 +15,6 @@ body {
     background-color: #fa9527;
     color: white;
     padding: 3px 10px;
-    border-radius: 3px;
     font-weight: bold;
     margin-right: 10px;
 }
@@ -211,13 +210,13 @@ body {
      /*flex-wrap: wrap;*/ /* Allows items to move to the next line */
     justify-content: space-between; /* Ensures even spacing */
     gap: 20px; /* Adds spacing between product cards */
-    margin-left: 70px;
+    margin-left: 150px;
     margin-right: 70px;
 }
 
 .farmer-name {
-    font-size: 29px;
-    color: gray;
+    font-size: 24px !important;
+    color: gray !important;
 }
 
 .price-section {
@@ -241,27 +240,49 @@ body {
     margin-top: 5px;
 }
 
+
 .view-btn {
     background-color: #0e8743;
     color: white;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 10px; /* Added margin to separate buttons */
+    text-align: center;
 }
 
 .cart-btn {
     background-color: #FA9527;
     color: white;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+}
+
+.prev-btn {
+    background-color: #FA9527;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    margin-left:300px;
+    margin-right:300px;
+    margin-bottom:40px;
+
+}
+
+.next-btn {
+    background-color: #FA9527;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 300px;
+    
+    margin-bottom: 40px;
 }
 
 .location i {
@@ -733,7 +754,7 @@ h2 {
 .product-price {
     font-size: 18px;
     margin-top: 50px;
-    margin-bottom: 70px;
+    margin-bottom: 10px !important;
 }
 
 .current-price {

@@ -16,7 +16,12 @@ namespace KrishiSadhana.Administrator
         SqlCommand cmd;
         DataSet ds;
         SqlDataAdapter da;
+
         Admin_Class ac = new Admin_Class();
+
+        //for image updating
+        string fileName;
+        int isImageUpate = 0; // this variable will be 1 if new image is there and base on it query will be fired
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -112,12 +117,48 @@ namespace KrishiSadhana.Administrator
             Response.Redirect("Products.aspx");
         }
 
+
+        //for updating image
+        void uploadImage()
+        {
+            if (FileUpload1.HasFile)
+            {
+
+                isImageUpate = 1;
+                // Path to Images/Product_Images folder from Administrator
+                string folderPath = Server.MapPath("~/Images/Product_Images/");
+
+                // Check and create folder if it doesn't exist
+                if (!System.IO.Directory.Exists(folderPath))
+                {
+                    System.IO.Directory.CreateDirectory(folderPath);
+                }
+
+                // Save image to Product_Images folder
+                fileName = "Images/Product_Images/" + FileUpload1.FileName;
+                FileUpload1.SaveAs(System.IO.Path.Combine(folderPath, FileUpload1.FileName));
+
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Image Uploaded Successfully!');", true);
+            }
+        }
+
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            //updating details
-            ac.updateProduct(txtName.Text, drpCategory.SelectedValue, txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, txtDesc.Text, Convert.ToInt32(ViewState["productId"]));
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product Updated Successfully!');", true);
-            Response.Redirect("Products.aspx");
+            uploadImage();
+            if(isImageUpate == 1)
+            {
+                //updating details with image
+                ac.updateProductImage(txtName.Text, Convert.ToInt32(ViewState["Category_id"]), txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, txtDesc.Text, fileName,Convert.ToInt32(ViewState["productId"]));
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product Updated Successfully!');", true);
+                Response.Redirect("Products.aspx");
+            }
+            else
+            {
+                //updating details without image
+                ac.updateProduct(txtName.Text, Convert.ToInt32(ViewState["Category_id"]), txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, txtDesc.Text, Convert.ToInt32(ViewState["productId"]));
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Product Updated Successfully!');", true);
+                Response.Redirect("Products.aspx");
+            }
 
         }
 

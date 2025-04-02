@@ -87,7 +87,7 @@ namespace KrishiSadhana.Administrator
 
         //for inserting Products
 
-        public void insertProducts(string name, string category, string ori_price, string selling_price, string dicsount, string qty, string origin, string slug, string image, string desc)
+        public void insertProducts(string name, int category, string ori_price, string selling_price, string dicsount, string qty, string origin, string slug, string image, string desc)
         {
             startCon();
             cmd = new SqlCommand("Insert into Products_tbl (Name, Category, Ori_Price, Sell_Price, Discount, Current_Qty, Origin, Slug, Image, Description) values ('" + name + "', '" + category + "', '" + ori_price + "', '" + selling_price + "', '" + dicsount + "', '" + qty + "', '" + origin + "', '" + slug + "', '" + image + "', '"+desc+"')", con);
@@ -106,8 +106,8 @@ namespace KrishiSadhana.Administrator
             return ds;
         }
 
-        //updating product details
-        public void updateProduct(string Name, string category, string ori_price, string selling_price, string discount, string qty, string origin, string slug, string desc, int id)
+        //updating product details without image
+        public void updateProduct(string Name, int category, string ori_price, string selling_price, string discount, string qty, string origin, string slug, string desc, int id)
         {
             startCon();
 
@@ -115,6 +115,18 @@ namespace KrishiSadhana.Administrator
             DateTime currentDate = DateTime.Today;
 
             cmd = new SqlCommand("Update Products_tbl set Name = '" + Name + "', Category = '" + category + "', Ori_Price = '" + ori_price + "', Sell_Price = '" + selling_price + "', Discount = '" + discount + "', Current_Qty = '" + qty + "', Origin = '" + origin + "', Slug = '" + slug + "', LastUpdated = '" + currentDate + "', Description = '" + desc + "' Where Id = '"+id+"'", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //updating product details with image
+        public void updateProductImage(string Name, int category, string ori_price, string selling_price, string discount, string qty, string origin, string slug, string desc, string image ,int id)
+        {
+            startCon();
+
+            //getting date to update value of LastUpdated column
+            DateTime currentDate = DateTime.Today;
+
+            cmd = new SqlCommand("Update Products_tbl set Name = '" + Name + "', Category = '" + category + "', Ori_Price = '" + ori_price + "', Sell_Price = '" + selling_price + "', Discount = '" + discount + "', Current_Qty = '" + qty + "', Origin = '" + origin + "', Slug = '" + slug + "', LastUpdated = '" + currentDate + "', Description = '" + desc + "', Image = '"+image+"' Where Id = '" + id + "'", con);
             cmd.ExecuteNonQuery();
         }
 
@@ -138,10 +150,20 @@ namespace KrishiSadhana.Administrator
             return ds;
         }
 
+
+        //updating without imaeg
         public void updateDoctor(string name, string expe, string special, string study, string city, string state, int id)
         {
             startCon();
             cmd = new SqlCommand("Update Doctors_tbl set Name = '" + name + "', Current_experience = '" + expe + "', Specialization = '" + special + "', Study = '" + study + "', City = '" + city + "', State = '" + state + "' where Id = '" + id + "'", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //updating with imaeg
+        public void updateDoctorImage(string name, string expe, string special, string study, string city, string state, string image ,int id)
+        {
+            startCon();
+            cmd = new SqlCommand("Update Doctors_tbl set Name = '" + name + "', Current_experience = '" + expe + "', Specialization = '" + special + "', Study = '" + study + "', City = '" + city + "', State = '" + state + "', Image = '"+image+"' where Id = '" + id + "'", con);
             cmd.ExecuteNonQuery();
         }
 
@@ -153,5 +175,31 @@ namespace KrishiSadhana.Administrator
             cmd.ExecuteNonQuery();
         }
 
+        //fetching vehicle details for update
+        public DataSet fetchVehicle(int id)
+        {
+            startCon();
+            da = new SqlDataAdapter("Select * from Vehicles_tbl where Id = '" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
+
+        //update vehicle without image
+        public void updateVehicle(string name, string company, string product, string rent, string city, string state, int id)
+        {
+            startCon();
+            cmd = new SqlCommand("Update Vehicles_tbl set Name = '" + name + "', Company = '" + company + "', Product = '" + product + "', Rent_Per_Day = '" + rent + "', City = '" + city + "', State = '" + state + "' where Id = '" + id + "'", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //update vehicle with image
+        public void updateVehicleImage(string name, string company, string product, string rent, string city, string state, string image, int id)
+        {
+            startCon();
+            cmd = new SqlCommand("Update Vehicles_tbl set Name = '" + name + "', Company = '" + company + "', Product = '" + product + "', Rent_Per_Day = '" + rent + "', City = '" + city + "', State = '" + state + "', Image = '"+image+"' where Id = '" + id + "'", con);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit_Product.aspx.cs" Inherits="KrishiSadhana.Administrator.Edit_Product" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit_Vehicle.aspx.cs" Inherits="KrishiSadhana.Administrator.Edit_Vehicle" %>
 
 <!DOCTYPE html>
 
@@ -162,10 +162,10 @@
                 <h4 class="mb-4 text-light">ADMIN PANEL</h4>
                 <a href="Dashboard.aspx">Dashboard</a>
                 <a href="Categoreis.aspx">Categories</a>
-                <a href="Products.aspx" class="active">Products</a>
+                <a href="Products.aspx" >Products</a>
                 <a href="Orders.aspx">Orders</a>
                 <a href="Vehicles_Orders.aspx">Vehicles Orders</a>
-                <a href="Doctors.aspx">Doctors</a>
+                <a href="Doctors.aspx" class="active">Doctors</a>
                 <a href="User_Queries.aspx">User Queries</a>
                 <a href="Vehicles.aspx">Vehicles</a>
                 <a href="Users.aspx">Users</a>
@@ -175,7 +175,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 ms-auto p-4 overflow-hidden">
-                        <h3 class="mb-4" style="font-weight: 500">Edit Product : <asp:Label runat="server" Text="ProductName"></asp:Label></h3>
+                        <h3 class="mb-4" style="font-weight: 500">Edit Doctor : <asp:Label runat="server" Text="ProductName"></asp:Label></h3>
                         <div class="card border-0 shadow mb-4" style="width: 1200px; height: 530px; left: 0px; top: 0px;">
                            
 
@@ -186,15 +186,14 @@
                                         <!-- Form Fields -->
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <div class="mb-1">Product Name</div>
+                                                <div class="mb-1">Vehicle Name</div>
                                                 <asp:TextBox ID="txtName" CssClass="form-control" Placeholder="Enter name" runat="server" />
                                             </div>
 
                                             <div class="col-md-6">
-                                                <div class="mb-1">Category Name</div>
-                                                <asp:DropDownList ID="drpCategory" CssClass="form-control" runat="server" OnSelectedIndexChanged="drpCategory_SelectedIndexChanged">
-                                                    <asp:ListItem>-- Select Category --</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <div class="mb-1">Vehicle Company</div>
+                                                <asp:TextBox ID="txtCompany" CssClass="form-control" Placeholder="Enter name" runat="server" />
+                                                
                                             </div>
                                         </div>
 
@@ -202,58 +201,37 @@
 
                                          <div class="row mb-4">
                                             <div class="col-md-6">
-                                        <div class="mb-1">Product Quantity</div>
-                                                <asp:TextBox ID="txtQty" CssClass="form-control" Placeholder="Enter Total Quantity" runat="server" />
+                                        <div class="mb-1">Products(Crops)</div>
+                                                <asp:TextBox ID="txtProducts" CssClass="form-control" Placeholder="Enter Total Quantity" runat="server" />
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="mb-1">Product Origin</div>
-                                                <asp:TextBox ID="txtOrigin" CssClass="form-control" Placeholder="Enter Product Origin" runat="server" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-4">
-                                            <div class="col-md-6">
-                                                <div class="mb-1">Product Original Price</div>
-                                                <asp:TextBox ID="txtOriPrice" CssClass="form-control" AutoPostBack="true" Placeholder="Enter Original Price" runat="server" OnTextChanged="txtOriPrice_TextChanged" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-1">Product Sell Price</div>
-                                                <asp:TextBox ID="txtSellprice" CssClass="form-control" AutoPostBack="true" Placeholder="Enter Selling Price" runat="server" OnTextChanged="txtSellprice_TextChanged" />
+                                                <div class="mb-1">Per day Rent</div>
+                                                <asp:TextBox ID="txtRent" CssClass="form-control" Placeholder="Enter Product Origin" runat="server" />
                                             </div>
                                         </div>
 
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <div class="mb-1">Product Slug</div>
-                                                <asp:TextBox ID="txtSlug" CssClass="form-control" Placeholder="Enter Product Slug" runat="server" />
-
+                                                <div class="mb-1">Ctiy</div>
+                                                <asp:TextBox ID="txtCity" CssClass="form-control" Placeholder="Enter Original Price" runat="server"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="mb-1">Product Discount</div>
-                                                <asp:TextBox ID="txtDiscount" CssClass="form-control" Enabled="false" runat="server" />
+                                                <div class="mb-1">State</div>
+                                                <asp:TextBox ID="txtState" CssClass="form-control" Placeholder="Enter Selling Price" runat="server"/>
                                             </div>
-
                                         </div>
 
-                                        <div class="row mb-4">
-                                        
-                                            <div class="col-md-6">
-                                                <div class="mb-1">Product Description</div>
-                                                <asp:TextBox ID="txtDesc" CssClass="form-control"  runat="server" />
-                                            </div>
-
-                                            <div class="col-md-6">
+                                          <div class="row mb-4">
+                                              <div class="col-md-6">
                                                 <div class="mb-1">Product Image</div>
                                                 <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
                                             </div>
-
-
-                                        </div>
+                                            </div>
 
                                          <div class="row mb-1">
                                             <div class="col-md-6">
-                                                <div class="mb-1">Product Image</div>
-                                                <asp:Image ID="proImage" runat="server" Height="200px" Width="200px" />
+                                                <div class="mb-1">Vehicle Image</div>
+                                                <asp:Image ID="vehImage" runat="server" Height="200px" Width="200px" />
                                             </div>
                                             <div class="col-md-6 mt-4 d-flex align-items-center">
                                                 <asp:Button ID="btnUpdate" Text ="Update" CssClass="mx-4 btn btn-success" runat="server" OnClick="btnUpdate_Click"/>
@@ -292,4 +270,3 @@
 
 </body>
 </html>
-

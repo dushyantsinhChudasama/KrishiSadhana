@@ -76,6 +76,7 @@
     <Content Include="Administrator\Doctors.aspx" />
     <Content Include="Administrator\Edit_Doctor.aspx" />
     <Content Include="Administrator\Edit_Product.aspx" />
+    <Content Include="Administrator\Edit_Vehicle.aspx" />
     <Content Include="Administrator\Login.aspx" />
     <Content Include="Administrator\Logout.aspx" />
     <Content Include="Administrator\Orders.aspx" />
@@ -222,6 +223,13 @@
     </Compile>
     <Compile Include="Administrator\Edit_Product.aspx.designer.cs">
       <DependentUpon>Edit_Product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Edit_Vehicle.aspx.cs">
+      <DependentUpon>Edit_Vehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Edit_Vehicle.aspx.designer.cs">
+      <DependentUpon>Edit_Vehicle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

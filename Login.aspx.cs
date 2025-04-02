@@ -27,11 +27,38 @@ namespace KrishiSadhana
 
             i = Convert.ToInt32(cmd.ExecuteScalar());
 
-            if(i > 0)
+            if (i > 0)
             {
+                cmd = new SqlCommand("Select Id from UserDetails_tbl where Email = '" + txtEmail.Text + "' AND Password = '" + txtPassword.Text + "'", mcls.startCon());
+                object user_id = cmd.ExecuteScalar();
+
+                if(user_id != null)
+                {
+                    Session["userId"] = user_id;
+                }
                 Session["user"] = txtEmail.Text;
                 Response.Redirect("Home.aspx");
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Invalid Login credentials!');", true);
+            }
+
+
+
+            //object result = cmd.ExecuteScalar();
+
+            //if (result != null)
+            //{
+            //    Session["user"] = txtEmail.Text;
+            //    Session["userId"] = result.ToString(); // Storing UserId in session
+            //    Response.Redirect("Home.aspx");
+            //}
+            //else
+            //{
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Invalid Login credentials!');", true);
+            //}
+
         }
     }
 }

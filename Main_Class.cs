@@ -44,6 +44,24 @@ namespace KrishiSadhana
             cmd.ExecuteNonQuery();
         }
 
+        //method to fetch product details for Product_Detasils.aspx
+        public DataSet getProduct(int id)
+        {
+            startCon();
+            da = new SqlDataAdapter("SELECT p.*, c.Name AS CategoryName FROM products_tbl p JOIN Categories_tbl c ON p.Category = c.Id where p.Id = '" + id + "'", con);
+            ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
+
+        //for adding product to cart from product page not from product details page
+        public void insertIntoCart(int user_id, int pro_id)
+        {
+            startCon();
+            cmd = new SqlCommand("Insert into Cart_tbl (user_id, pro_id) VALUES ('" + user_id + "' ,'" + pro_id + "')", con);
+            cmd.ExecuteNonQuery();
+        }
 
     }
 }

@@ -86,7 +86,7 @@ namespace KrishiSadhana.Administrator
         void displayProducts()
         {
             //da = new SqlDataAdapter("select p.*, c.name as CatName FROM Products_tbl p JOIN Categories_tbl c ON p.Category = c.Id; ", ac.startCon());
-            da = new SqlDataAdapter("select * FROM Products_tbl", ac.startCon());
+            da = new SqlDataAdapter("SELECT p.*, c.Name AS CategoryName FROM products_tbl p JOIN Categories_tbl c ON p.Category = c.Id;", ac.startCon());
             ds = new DataSet();
             da.Fill(ds);
 
@@ -95,7 +95,7 @@ namespace KrishiSadhana.Administrator
         }
         
 
-        //getting id of selected 
+        //getting id of selected category
         protected void drpCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             da = new SqlDataAdapter("select * from Categories_tbl where Name = '" + drpCategory.SelectedValue + "'", ac.startCon());
@@ -124,7 +124,7 @@ namespace KrishiSadhana.Administrator
                 fileName = "Images/Product_Images/" + FileUpload1.FileName;
                 FileUpload1.SaveAs(System.IO.Path.Combine(folderPath, FileUpload1.FileName));
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Image Uploaded Successfully!');", true);
+               // ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Image Uploaded Successfully!');", true);
             }
             else
             {
@@ -137,7 +137,7 @@ namespace KrishiSadhana.Administrator
         {
             //inserting products
             uploadImage();
-            ac.insertProducts(txtName.Text, drpCategory.SelectedValue, txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, fileName, txtDesc.Text);
+            ac.insertProducts(txtName.Text, Convert.ToInt32(ViewState["Category_id"]), txtOriPrice.Text, txtSellprice.Text, txtDiscount.Text, txtQty.Text, txtOrigin.Text, txtSlug.Text, fileName, txtDesc.Text);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New Product Added!');", true);
 
             txtName.Text = null;
@@ -215,6 +215,11 @@ namespace KrishiSadhana.Administrator
                 }
             }
             base.Render(writer);
+        }
+
+        protected void ProductGrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
