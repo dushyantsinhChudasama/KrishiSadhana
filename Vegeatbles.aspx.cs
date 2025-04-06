@@ -36,7 +36,10 @@ namespace KrishiSadhana
         void display()
         {
 
-            da = new SqlDataAdapter("select * from Products_tbl", mc.startCon());
+            //da = new SqlDataAdapter("select * from Products_tbl", mc.startCon());
+
+            da = new SqlDataAdapter("SELECT p.* FROM Products_tbl p JOIN Categories_tbl c ON p.Category = c.Id WHERE c.Name = 'Vegetable';", mc.startCon());
+
             ds = new DataSet();
             da.Fill(ds);
 
@@ -89,6 +92,34 @@ namespace KrishiSadhana
         protected void btnView_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void dataListCrops_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            ViewState["proid"] = e.CommandArgument;
+
+            if (e.CommandName == "cmd_view")
+            {
+                Response.Redirect("Product_Details.aspx?ProId=" + ViewState["proid"]);
+            }
+
+            if (e.CommandName == "cmd_cart")
+            {
+
+                if (lblName.Text == "Login")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please login to add to cart!');", true);
+                }
+                else
+                {
+                    int pro_id = Convert.ToInt32(ViewState["proid"]);
+                    int user_id = Convert.ToInt32(Session["userId"]);
+                    mc.insertIntoCart(user_id, pro_id);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Item Added to cart!');", true);
+                }
+
+
+            }
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

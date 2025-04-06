@@ -63,5 +63,14 @@ namespace KrishiSadhana
             cmd.ExecuteNonQuery();
         }
 
+        //for adding product to cart from prodcut details page with quantity
+
+        public void insertIntoCartWithQuantity(int user_id, int pro_id, int qty)
+        {
+            startCon();
+            cmd = new SqlCommand("Insert into Cart_tbl (user_id, pro_id, quantity) VALUES ('" + user_id + "' ,'" + pro_id + "', '"+qty+"')", con);
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

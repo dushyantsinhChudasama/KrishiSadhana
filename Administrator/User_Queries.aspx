@@ -167,7 +167,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 ms-auto p-4 overflow-hidden">
-                        <h3 class="mb-4" style="font-weight: 500">User Queries</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3 class="mb-4" style="font-weight: 500;">User Queries</h3>
+                            <h3 class="mb-4" style="font-weight: 500;">
+
+                                <%-- This is to show admin name in right corner --%>
+                                <asp:Label ID="lblAdminName" runat="server" Text="AdminName"></asp:Label></h3>
+                        </div>
 
                         <div class="card border-0 shadow mb-4" style="width: 1116px; height: 440px; left: 0px; top: 0px;">
                             <div>

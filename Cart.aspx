@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="KrishiSadhana.assets.css.Cart" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="KrishiSadhana.assets.css.Cart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -7,74 +7,51 @@
     <div class="cart-container">
         <h2 class="mb-4">Your Cart</h2>
         <div class="cart-table">
-            <div class="cart-header">
-                <span style="margin-right: 100px;">Item</span>
-                <span style="margin-right: 100px; margin-left: 310px;">Qty</span>
-                <span style="margin-right: 100px; margin-left: 20px;">Price</span>
-                <span style="margin-right: 1000px;">Total</span>
-            </div>
-    
-            <div class="cart-item">
-                <div class="item-details">
-                    <img src="assets/Images/Main-product-image.png" style="height: 150px; width: 150px; margin-right: 30px;" alt="Product Image">
-                    <div class="product-info">
-                        <p class="product-name">Product Name</p>
-                        <p class="farmer-name">Farmer name</p>
-                    </div>
-                </div>
-    
-                <div class="quantity">
-                    <button class="qty-btn minus">-</button>
-                    <input type="text" value="3" class="qty-input">
-                    <button class="qty-btn plus">+</button>
-                </div>
-    
-                <span class="price">₹84.00</span>
-                <span class="total">₹252.00</span>
-                <button class="delete-btn"><img src="assets/Images/Remove.png" alt=""></button>
-            </div>
 
-            <div class="cart-item">
-                <div class="item-details">
-                    <img src="assets/Images/Main-product-image.png" style="height: 150px; width: 150px; margin-right: 30px;" alt="Product Image">
-                    <div class="product-info">
-                        <p class="product-name">Product Name</p>
-                        <p class="farmer-name">Farmer name</p>
-                    </div>
-                </div>
-    
-                <div class="quantity">
-                    <button class="qty-btn minus">-</button>
-                    <input type="text" value="3" class="qty-input">
-                    <button class="qty-btn plus">+</button>
-                </div>
-                
-    
-                <span class="price">₹84.00</span>
-                <span class="total">₹252.00</span>
-                <button class="delete-btn"><img src="assets/Images/Remove.png" alt=""></button>
-            </div>
+            <asp:GridView ID="ProductGrid" runat="server" AutoGenerateColumns="False" Width="1022px" OnRowCommand="ProductGrid_RowCommand" GridLines="Horizontal">
+                <Columns>
+                    <asp:TemplateField HeaderText="Item">
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server"  Height="138px" ImageUrl='<%# Eval("Image") %>' Width="158px"  Style="padding: 5px;"  />
+                        </ItemTemplate>
+                        <ControlStyle Width="158px" />
+                        <HeaderStyle Font-Bold="True" VerticalAlign="Middle" />
+                        <ItemStyle Width="200px" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Name" ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Left" Width="300px" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Qty">
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("quantity") %>'></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Price">
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text= '<%# "₹" + Eval("Sell_Price") %>'></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Total">
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# "₹" + Eval("Total") %>'></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Remove">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_rem" ImageUrl="~/assets/Images/Remove.png" />
+                        </ItemTemplate>
+                        <ItemStyle Width="100px" />
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
 
-            <div class="cart-item">
-                <div class="item-details">
-                    <img src="assets/Images/Main-product-image.png" style="height: 150px; width: 150px; margin-right: 30px;" alt="Product Image">
-                    <div class="product-info">
-                        <p class="product-name">Product Name</p>
-                        <p class="farmer-name">Farmer name</p>
-                    </div>
-                </div>
-    
-                 <div class="quantity">
-                    <button class="qty-btn minus">-</button>
-                    <input type="text" value="3" class="qty-input">
-                    <button class="qty-btn plus">+</button>
-                </div>
-    
-                <span class="price">₹84.00</span>
-                <span class="total">₹252.00</span>
-                <button class="delete-btn"><img src="assets/Images/Remove.png" alt=""></button>
-            </div>
-        </div>
+           
     
         <div class="cart-footer">
             <span>Grand Total : ₹252.00</span>
@@ -82,6 +59,7 @@
         </div>
     </div>
     
+        </div>
 </asp:Content>
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="ContentPlaceHolder1">

@@ -25,7 +25,12 @@ namespace KrishiSadhana
             {
                 ViewState["Pid"] = Request.QueryString["proid"];
                 displayDetails();
-                txtQuantity.Text = "1";
+                
+                // Set default quantity only on first page load (not on postback)
+                if (!IsPostBack)
+                {
+                    txtQuantity.Text = "1";
+                }
             }
             else
             {
@@ -63,18 +68,23 @@ namespace KrishiSadhana
        // for add to cart
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //if (Session["user"] != null && Session["user"].ToString() != "")
-            //{
-            //    int pro_id = Convert.ToInt32(ViewState["Pid"]);
-            //    int user_id = Convert.ToInt32(Session["userId"]);
-            //    mc.insertIntoCartWithQuantity(user_id, pro_id);
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Item Added to cart!');", true);
-            //}
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please login to add to cart!');", true);
+            if (Session["user"] != null && Session["user"].ToString() != "")
+            {
+                //taking total quantity
+                int qty = Convert.ToInt32(txtQuantity.Text);
 
-            //}
+
+                int pro_id = Convert.ToInt32(ViewState["Pid"]);
+                int user_id = Convert.ToInt32(Session["userId"]);
+                mc.insertIntoCartWithQuantity(user_id, pro_id, qty);
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Item Added to cart!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please login to add to cart!');", true);
+
+            }
         }
     }
 }

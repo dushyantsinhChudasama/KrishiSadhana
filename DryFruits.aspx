@@ -16,7 +16,7 @@
 
         <%-- Data list for displaying products --%>
 
-            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged">
+            <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged" OnItemCommand="dataListCrops_ItemCommand">
                 <ItemTemplate>
                     <div class="product-card">
                         <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
@@ -38,9 +38,9 @@
 
 
                          <div style="text-align: center;">
-                            <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click">View Product</asp:LinkButton>
+                            <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" CommandName="cmd_view"></asp:LinkButton>
                             <br />
-                            <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click">Add to Cart</asp:LinkButton>
+                            <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" CommandName="cmd_cart"></asp:LinkButton>
                         </div>
 
                     </div>

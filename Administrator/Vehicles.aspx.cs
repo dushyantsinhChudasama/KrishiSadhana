@@ -23,6 +23,7 @@ namespace KrishiSadhana.Administrator
         protected void Page_Load(object sender, EventArgs e)
         {
             Admin_Class.checkAdmin();
+            lblAdminName.Text = "Hello " + Session["admin"].ToString();
             if (!IsPostBack)
             {
                 displayVehicles();

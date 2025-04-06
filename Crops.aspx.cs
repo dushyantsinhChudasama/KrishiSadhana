@@ -36,7 +36,8 @@ namespace KrishiSadhana
         void display()
         {
 
-            da = new SqlDataAdapter("select * from Products_tbl", mc.startCon());
+            //da = new SqlDataAdapter("select * from Products_tbl", mc.startCon());
+            da = new SqlDataAdapter("SELECT p.* FROM Products_tbl p JOIN Categories_tbl c ON p.Category = c.Id WHERE c.Name = 'Crops';", mc.startCon());
             ds = new DataSet();
             da.Fill(ds);
 

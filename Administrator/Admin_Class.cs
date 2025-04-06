@@ -99,7 +99,7 @@ namespace KrishiSadhana.Administrator
         public DataSet fetchProduct(int id)
         {
             startCon();
-            da = new SqlDataAdapter("Select * from Products_tbl where Id ='" + id + "'", con);
+            da = new SqlDataAdapter("SELECT p.*, c.Name FROM Products_tbl p JOIN Categories_tbl c ON p.Category = c.Id WHERE p.Id = '" + id + "'", con);
             ds = new DataSet();
             da.Fill(ds);
 

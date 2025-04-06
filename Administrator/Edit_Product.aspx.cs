@@ -33,8 +33,8 @@ namespace KrishiSadhana.Administrator
                 if(!string.IsNullOrEmpty(Request.QueryString["ProductId"]))
                 {
                     ViewState["productId"] = Request.QueryString["ProductId"];
-                    fillData();
                     fillCategory();
+                    fillData();
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace KrishiSadhana.Administrator
             ds = ac.fetchProduct(Convert.ToInt32(ViewState["productId"]));
 
             txtName.Text = ds.Tables[0].Rows[0][1].ToString();
-            drpCategory.SelectedValue = ds.Tables[0].Rows[0]["Category"].ToString();
+            //drpCategory.SelectedValue = ds.Tables[0].Rows[0]["Category"].ToString();
             txtOriPrice.Text = ds.Tables[0].Rows[0][3].ToString();
             txtSellprice.Text = ds.Tables[0].Rows[0][4].ToString();
             txtDiscount.Text = ds.Tables[0].Rows[0][5].ToString();
@@ -83,6 +83,20 @@ namespace KrishiSadhana.Administrator
             txtDesc.Text = ds.Tables[0].Rows[0][12].ToString();
 
             proImage.ImageUrl = ResolveUrl("~/"+ds.Tables[0].Rows[0][11].ToString());
+
+            // Fetch category
+            string categoryName = ds.Tables[0].Rows[0][13].ToString().Trim();
+            ListItem item = drpCategory.Items.FindByText(categoryName);
+
+            if (item != null)
+            {
+                drpCategory.ClearSelection();
+                item.Selected = true;
+            }
+            else
+            {
+                Console.WriteLine("Category Not Found: " + categoryName);
+            }
 
         }
 
