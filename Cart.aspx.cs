@@ -58,15 +58,54 @@ namespace KrishiSadhana.assets.css
         }
 
         //fetch cart details
+        //public void displayProducts()
+        //{
+        //    da = new SqlDataAdapter("SELECT c.Id, p.Name, CAST(p.Sell_Price AS DECIMAL(10,2)) AS Sell_Price, p.Image, CAST(c.quantity AS INT) AS quantity, (CAST(c.quantity AS INT) * CAST(p.Sell_Price AS DECIMAL(10,2))) AS Total FROM Cart_tbl c JOIN Products_tbl p ON c.pro_id = p.Id WHERE c.user_id = '" + Session["userId"] + "'", mc.startCon());
+        //    ds = new DataSet();
+        //    da.Fill(ds);
+
+        //    ProductGrid.DataSource = ds;
+        //    ProductGrid.DataBind();
+        //}
+
         public void displayProducts()
         {
-            da = new SqlDataAdapter("SELECT c.Id, p.Name, CAST(p.Sell_Price AS DECIMAL(10,2)) AS Sell_Price, p.Image, CAST(c.quantity AS INT) AS quantity, (CAST(c.quantity AS INT) * CAST(p.Sell_Price AS DECIMAL(10,2))) AS Total FROM Cart_tbl c JOIN Products_tbl p ON c.pro_id = p.Id WHERE c.user_id = '" + Session["userId"] + "'", mc.startCon());
+            string query = @"
+                            SELECT 
+                                c.Id, 
+                                p.Name, 
+                                CAST(p.Sell_Price AS DECIMAL(10,2)) AS Sell_Price, 
+                                p.Image, 
+                                CAST(c.quantity AS INT) AS quantity, 
+                                (CAST(c.quantity AS INT) * CAST(p.Sell_Price AS DECIMAL(10,2))) AS Total,
+                                SUM(CAST(c.quantity AS INT) * CAST(p.Sell_Price AS DECIMAL(10,2))) OVER () AS GrandTotal
+                            FROM 
+                                Cart_tbl c 
+                            JOIN 
+                                Products_tbl p ON c.pro_id = p.Id 
+                            WHERE 
+                                c.user_id = '" + Session["userId"] + "'";
+
+            da = new SqlDataAdapter(query, mc.startCon());
             ds = new DataSet();
             da.Fill(ds);
 
+            // Bind to GridView
             ProductGrid.DataSource = ds;
             ProductGrid.DataBind();
+
+            // Set GrandTotal to Label
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                decimal grandTotal = Convert.ToDecimal(ds.Tables[0].Rows[0]["GrandTotal"]);
+                lblTotalCartAmount.Text = "₹ " + grandTotal.ToString("0.00");
+            }
+            else
+            {
+                lblTotalCartAmount.Text = "₹ 0.00";
+            }
         }
+
 
         protected override void Render(HtmlTextWriter writer)
         {
@@ -84,5 +123,9 @@ namespace KrishiSadhana.assets.css
             base.Render(writer);
         }
 
+        protected void btnProceed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

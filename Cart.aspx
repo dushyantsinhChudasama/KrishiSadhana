@@ -54,8 +54,8 @@
            
     
         <div class="cart-footer">
-            <span>Grand Total : ₹252.00</span>
-            <button class="proceed-btn">Proceed</button>
+            <span>Grand Total : <asp:Label ID="lblTotalCartAmount" runat="server" Text="252.00"></asp:Label></span>
+            <asp:Button ID="btnProceed" OnClick="btnProceed_Click" runat="server" Text="Proceed" CssClass="proceed-btn" />
         </div>
     </div>
     
