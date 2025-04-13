@@ -125,7 +125,7 @@ namespace KrishiSadhana.assets.css
 
         protected void btnProceed_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Address.aspx?grandTotal="+lblTotalCartAmount.Text);
         }
     }
 }
