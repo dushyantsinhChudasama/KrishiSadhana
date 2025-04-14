@@ -31,7 +31,7 @@ namespace KrishiSadhana
         {
             startCon();
             cmd = new SqlCommand("insert into UserDetails_tbl (Name, Email, Gender,  Phone, Password) " +
-                "values ('" + name + "', '" + email + "', '"+gender+"', '" + phone + "', '" + password + "')", con);
+                "values ('" + name + "', '" + email + "', '" + gender + "', '" + phone + "', '" + password + "')", con);
 
             cmd.ExecuteNonQuery();
         }
@@ -68,7 +68,14 @@ namespace KrishiSadhana
         public void insertIntoCartWithQuantity(int user_id, int pro_id, int qty)
         {
             startCon();
-            cmd = new SqlCommand("Insert into Cart_tbl (user_id, pro_id, quantity) VALUES ('" + user_id + "' ,'" + pro_id + "', '"+qty+"')", con);
+            cmd = new SqlCommand("Insert into Cart_tbl (user_id, pro_id, quantity) VALUES ('" + user_id + "' ,'" + pro_id + "', '" + qty + "')", con);
+            cmd.ExecuteNonQuery();
+        }
+
+        //for adding booking in vehicle order table
+        public void insertVehicleOrder(string vehicleID, string vehicleImage, string vehicleName, string startDate, string endDate, string totalDays, string totalPayment, string userId)
+        {
+            cmd = new SqlCommand("Insert into Vehicle_order (vehicleID, vehicleImage, vehicleName, startDate ,endDate, TotalDays, TotalPayment, User_Id) VALUES ('" + vehicleID + "', '" + vehicleImage + "', '" + vehicleName + "', '" + startDate + "', '" + endDate + "', '" + totalDays + "', '" + totalPayment + "', '" + userId + "')", startCon());
             cmd.ExecuteNonQuery();
         }
 

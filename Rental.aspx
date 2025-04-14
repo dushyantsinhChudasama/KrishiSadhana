@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Rental.aspx.cs" Inherits="KrishiSadhana.Rental" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Rental.aspx.cs" Inherits="KrishiSadhana.Rental" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,6 +10,7 @@
         Rent a vehicle Online
     </div>
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="container-vh">
         <div class="search-bar-vh">
 
@@ -44,12 +45,50 @@
                             <%# Eval("City") %>, <%# Eval("State") %>
                         </p>
                     </div>
-                    <asp:Button ID="btnBook" runat="server" CssClass="book-btn" Text="Book Vehicle" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:LinkButton ID="btnBook" runat="server" CssClass="book-btn" Text="Book Vehicle" CommandArgument='<%# Eval("Id") %>' OnCommand="btnBook_Command" />
                 </div>
             </ItemTemplate>
         </asp:DataList>
 
+
     </div>
+
+
+    <%-- This is modal for booking a vehicle --%>
+
+        <!-- Vehicle Booking Modal -->
+    <div class="modal fade" id="vehicleBookingModal" tabindex="-1" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+            <h5 class="modal-title" id="vehicleModalLabel">Book Vehicle</h5>
+            </div>
+            <div class="modal-body">
+            <asp:Label ID="lblVehicleName" runat="server" CssClass="form-label fw-bold"></asp:Label><br />
+            <asp:Label ID="lblRentPerDay" runat="server" CssClass="form-label text-success"></asp:Label><br /><br />
+
+            <label class="form-label">Start Date:</label>
+            <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control" TextMode="Date" AutoPostBack="true" OnTextChanged="txtStartDate_TextChanged"></asp:TextBox>
+
+
+
+            <label class="form-label">End Date:</label>
+            <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control" TextMode="Date" AutoPostBack="true" OnTextChanged="txtEndDate_TextChanged"></asp:TextBox>
+
+
+            <asp:Label ID="lblTotalDays" runat="server" CssClass="form-label mt-2 d-block text-primary"></asp:Label><br />
+            <asp:Label ID="lblTotalPayment" runat="server" CssClass="form-label fw-bold text-danger"></asp:Label>
+            </div>
+            <div class="modal-footer">
+            <asp:Button ID="btnCancelBooking" runat="server" CssClass="btn btn-secondary" Text="Cancel" OnClick="btnCancelBooking_Click" CausesValidation="false" />
+            <asp:Button ID="btnConfirmBooking" runat="server" CssClass="btn btn-success" Text="Confirm Booking" OnClick="btnConfirmBooking_Click" />
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
 </asp:Content>
 
 <asp:Content ID="Content4" runat="server" contentplaceholderid="ContentPlaceHolder1">
@@ -63,6 +102,20 @@
                     <link rel="stylesheet" href="assets/css/style.css">
                     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
                     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+                    <!-- Bootstrap CSS -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+                    <!-- Bootstrap Bundle with Popper (JS) -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+                    <!-- jQuery (required for ScriptManager triggering and selectors) -->
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 
                     <style>
                         .farmer-name

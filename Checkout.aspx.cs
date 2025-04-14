@@ -79,6 +79,9 @@ namespace KrishiSadhana.assets.css
                 //razorpay payment gateway
                 registrationAmount = Convert.ToDecimal(lblNetPrice.Text);
 
+                //creating session for total amount
+                Session["NetAmount"] = registrationAmount;
+                Session["paymentMode"] = "Online";
 
                 decimal amountsinSubUnits = registrationAmount * 100;
                 string currency = "INR";
@@ -105,6 +108,10 @@ namespace KrishiSadhana.assets.css
             {
                 //Generate order id
                 string orderId = "order_" + GenerateRandomString(13);
+
+                Session["paymentMode"] = "COD";
+                Session["NetAmount"] = lblNetPrice.Text;
+
                 Response.Redirect("Success.aspx?"+orderId);
             }
         }

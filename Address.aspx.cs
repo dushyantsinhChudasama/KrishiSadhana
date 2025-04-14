@@ -55,6 +55,26 @@ namespace KrishiSadhana
                 Session["shipState"] = txtStates.Text;
                 Session["shipPincode"] = txtPincode.Text;
                 Session["totalPrice"] = totalAmount;
+                
+                if(txtNote.Text != "")
+                {
+                    Session["note"] = txtNote.Text;
+                }
+                else
+                {
+                    Session["note"] = "No note provided";
+
+                }
+
+                if (txtLandmark.Text != "")
+                {
+                    Session["landmark"] = txtLandmark.Text;
+                }
+                else
+                {
+                    Session["landmark"] = "No Landmark provided";
+
+                }
 
                 Response.Redirect("Checkout.aspx");
                 

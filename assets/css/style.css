@@ -617,10 +617,12 @@ body {
     cursor: pointer;
     width: 150px; /* Fixed size or adjust as needed */
     transition: background-color 0.3s;
+    text-decoration:none;
 }
 
 .book-btn:hover {
     background-color: #1b5e20;
+    color:white;
 }
 
 .wrapper {
