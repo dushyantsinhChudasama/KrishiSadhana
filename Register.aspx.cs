@@ -21,6 +21,10 @@ namespace KrishiSadhana
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            lblLogout.Visible = false;
+            lblProfile.Visible = false;
+
             getCon();
         }
 

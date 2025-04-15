@@ -102,6 +102,10 @@
     <Content Include="assets\Images\deleteIcon.png" />
     <Content Include="assets\Images\editIcon.png" />
     <Content Include="assets\Images\icons8-delete-100.png" />
+    <Content Include="assets\Images\logout.png" />
+    <Content Include="assets\Images\userProfile.png" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="Consultation.aspx" />
     <Content Include="Contact.aspx" />
@@ -159,6 +163,11 @@
     <Content Include="Fruits.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MyConsultations.aspx" />
+    <Content Include="MyOrders.aspx" />
+    <Content Include="MyProfile.aspx" />
+    <Content Include="MyVehicleBookings.aspx" />
+    <Content Include="OrderDetails.aspx" />
     <Content Include="Orders.aspx" />
     <Content Include="Product_Details.aspx" />
     <Content Include="Register.aspx" />
@@ -305,6 +314,20 @@
       <DependentUpon>Vehicles_Orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin_Class.cs" />
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -369,6 +392,41 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main_Class.cs" />
+    <Compile Include="MyConsultations.aspx.cs">
+      <DependentUpon>MyConsultations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyConsultations.aspx.designer.cs">
+      <DependentUpon>MyConsultations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyOrders.aspx.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyOrders.aspx.designer.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyVehicleBookings.aspx.cs">
+      <DependentUpon>MyVehicleBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyVehicleBookings.aspx.designer.cs">
+      <DependentUpon>MyVehicleBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.designer.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

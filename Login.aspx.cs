@@ -17,7 +17,17 @@ namespace KrishiSadhana
         Main_Class mcls = new Main_Class();
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblLogout.Visible = false;
+            lblProfile.Visible = false;
 
+            if (Session["user"] != null && Session["user"].ToString() != "")
+            {
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                lblName.Text = "Login";
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

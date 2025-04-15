@@ -11,9 +11,15 @@ namespace KrishiSadhana
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            lblLogout.Visible = false;
+            lblProfile.Visible = false;
+
             if (Session["user"] != null && Session["user"].ToString() != "")
             {
                 lblName.Text = Session["user"].ToString();
+                lblLogout.Visible = true;
+                lblProfile.Visible = true;
             }
             else
             {

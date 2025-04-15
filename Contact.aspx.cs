@@ -20,10 +20,16 @@ namespace KrishiSadhana.assets.css
         Main_Class mc = new Main_Class();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblMessage.Visible = false;
+                lblLogout.Visible = false;
+                lblProfile.Visible = false;
+
+                lblMessage.Visible = false;
+
             if (Session["user"] != null && Session["user"].ToString() != "")
             {
                 lblName.Text = Session["user"].ToString();
+                lblLogout.Visible = true;
+                lblProfile.Visible = true;
             }
             else
             {

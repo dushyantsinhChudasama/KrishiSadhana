@@ -156,23 +156,34 @@
                                     <img src="assets/Images/Search.png" width="25px" alt="">
                                 </button>
                             </div>
-                              <div class="header-icons">
+<div class="header-icons">
                     <div class="">
                     </div>
                     <a href="Orders.aspx" class="icons text-secondary">
                         <img src="assets/Images/Truck.png" alt=""
                             style="margin-bottom: 15px; height: 30px;" class="icons">
-                        Track order</a> <a href="#" class="icons text-secondary">
-                            <img src="assets/Images/Heart.png" alt=""
-                                style="margin-bottom: 7px; height: 30px;">
-                            Wishlist</a>
+                        Track order</a>
+
                     <a href="Login.aspx" class="icons text-secondary">
                         <img src="assets/Images/User Locked.png" alt=""
                             style="margin-bottom: 15px; height: 30px;">
-                        <asp:Label ID="lblName" runat="server" Text="Login"></asp:Label></a> <a href="Cart.aspx" class="icons text-secondary">
+                        <asp:Label ID="lblName" runat="server" Text="Login"></asp:Label></a> 
+                    
+                    <a href="MyProfile.aspx" class="icons text-secondary">
+                           
+                            <asp:Label ID="lblProfile" runat="server"> <img src="assets/Images/userProfile.png" alt="" style="margin-bottom: 7px; height: 30px;">  My Profile  </asp:Label></a>
+
+                    
+                    <a href="Cart.aspx" class="icons text-secondary">
                             <img src="assets/Images/Shopping Trolley.png" alt=""
                                 style="margin-bottom: 7px; height: 25px;">
                             Cart</a>
+
+                     <a href="Logout.aspx" class="icons text-secondary">
+                            
+                            <asp:Label ID="lblLogout" runat="server"><img src="assets/Images/logout.png" alt="" style="margin-bottom: 7px; height: 25px;">  Log Out  </asp:Label>
+
+                     </a>
                 </div>
                         </div>
                 </div>

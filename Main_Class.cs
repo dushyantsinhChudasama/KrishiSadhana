@@ -79,5 +79,28 @@ namespace KrishiSadhana
             cmd.ExecuteNonQuery();
         }
 
+        //update user information
+
+        //for update name and gender
+
+        public void updateNameGender(string name, string gender, string id)
+        {
+            cmd = new SqlCommand("Update UserDetails_tbl set Name = '" + name + "', Gender = '" + gender + "' Where Id = '" + id + "'", startCon());
+            cmd.ExecuteNonQuery();
+        }
+
+        //for updating email 
+        public void updateEmail(string email, string id)
+        {
+            cmd = new SqlCommand("Update UserDetails_tbl set Email = '" + email + "' Where Id = '" + id + "'", startCon());
+            cmd.ExecuteNonQuery();
+        }
+
+        //for updating mobilenumber
+        public void updateMobileNumber(string mobile, string id)
+        {
+            cmd = new SqlCommand("Update UserDetails_tbl set Phone = '" + mobile + "' Where Id = '" + id + "'", startCon());
+            cmd.ExecuteNonQuery();
+        }
     }
 }

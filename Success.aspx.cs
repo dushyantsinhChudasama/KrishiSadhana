@@ -22,7 +22,8 @@ namespace KrishiSadhana
             if (Session["user"] != null && Session["user"].ToString() != "")
             {
                 lblName.Text = Session["user"].ToString();
-
+                lblLogout.Visible = true;
+                lblProfile.Visible = true;
 
                 if (Session["paymentMode"].ToString() == "Online")
                 {
