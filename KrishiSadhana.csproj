@@ -88,12 +88,14 @@
     <Content Include="Administrator\Edit_Vehicle.aspx" />
     <Content Include="Administrator\Login.aspx" />
     <Content Include="Administrator\Logout.aspx" />
+    <Content Include="Administrator\OrderDetails.aspx" />
     <Content Include="Administrator\Orders.aspx" />
     <Content Include="Administrator\Products.aspx" />
     <Content Include="Administrator\Register.aspx" />
     <Content Include="Administrator\Users.aspx" />
     <Content Include="Administrator\User_Queries.aspx" />
     <Content Include="Administrator\Vehicles.aspx" />
+    <Content Include="Administrator\VehiclesDetails.aspx" />
     <Content Include="Administrator\Vehicles_Orders.aspx" />
     <Content Include="App_Data\KrishiSadhana_db.mdf" />
     <Content Include="App_Data\KrishiSadhana_db_log.ldf">
@@ -264,6 +266,13 @@
     <Compile Include="Administrator\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrator\OrderDetails.aspx.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\OrderDetails.aspx.designer.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrator\Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +314,13 @@
     </Compile>
     <Compile Include="Administrator\Vehicles.aspx.designer.cs">
       <DependentUpon>Vehicles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\VehiclesDetails.aspx.cs">
+      <DependentUpon>VehiclesDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\VehiclesDetails.aspx.designer.cs">
+      <DependentUpon>VehiclesDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\Vehicles_Orders.aspx.cs">
       <DependentUpon>Vehicles_Orders.aspx</DependentUpon>

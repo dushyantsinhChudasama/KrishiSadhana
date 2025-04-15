@@ -156,11 +156,78 @@
         <!-- Content Section -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 ms-auto p-4 overflow-hidden">
-                </div>
+               <div class="col-lg-12 ms-auto p-4 overflow-hidden">
+    <h3 class="mb-4">DASHBOARD</h3>
+
+    <div class="row">
+        <!-- Bookings Section -->
+
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-success">New Orders</h6>
+                <h3 class="text-success"><asp:Label ID="lblnewOrders" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-warning">Cancelled Orders</h6>
+                <h3 class="text-warning"><asp:Label ID="lblCancelorder" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-info">Delivered Orders</h6>
+                <h3 class="text-info"><asp:Label ID="lblshippedorder" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+
+        <!-- Users and Queries -->
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-success">Total Vehicels</h6>
+                <h3 class="text-success"><asp:Label ID="lblVehicles" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-warning">Vehicle Orders</h6>
+                <h3 class="text-warning"><asp:Label ID="lblVehiclesOrder" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-info">Completed Vehicles Orders</h6>
+                <h3 class="text-info"><asp:Label ID="lblCompletedVehicleOrder" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+
+        <!-- Rooms -->
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-success">Total Users</h6>
+                <h3 class="text-success"><asp:Label ID="lblTotalUser" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-warning">Total User Queries</h6>
+                <h3 class="text-warning"><asp:Label ID="lblTotalUserQueries" runat="server" Text="0"></asp:Label></h3>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white rounded shadow-sm text-center border">
+                <h6 class="text-info">Total Admins</h6>
+                <h3 class="text-info"><asp:Label ID="lblTotalAdmins" runat="server" Text="0"></asp:Label></h3>
             </div>
         </div>
     </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+
 
 
 
