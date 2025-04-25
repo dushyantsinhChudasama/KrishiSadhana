@@ -10,15 +10,6 @@
     </div>
 
     <div class="container-vh">
-        <div class="search-bar-vh">
-            <asp:TextBox ID="txtType" runat="server" placeholder="Enter Type" />
-
-            <asp:TextBox ID="txtCity" runat="server" placeholder="Enter City" />
-
-            <asp:TextBox ID="txtState" runat="server" placeholder="Enter State" />
-
-            <asp:Button ID="btnSearch" CssClass="search-btn" runat="server" Text="Button" />
-        </div>
 
         <asp:DataList ID="dlDoctors" runat="server" Width="830">
             <ItemTemplate>

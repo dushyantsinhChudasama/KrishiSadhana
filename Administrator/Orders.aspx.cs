@@ -44,5 +44,10 @@ namespace KrishiSadhana.Administrator
             OrdersGrid.DataSource = ds;
             OrdersGrid.DataBind();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

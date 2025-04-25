@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Orders.aspx.cs" Inherits="KrishiSadhana.Administrator.Orders" %>
 
+<%@ Register assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -139,6 +141,12 @@
 </head>
 <body>
 
+    <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True" GroupTreeImagesFolderUrl="" Height="50px" ReportSourceID="CrystalReportSource1" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" Width="350px" />
+    <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
+        <Report FileName="CrystalReport1.rpt">
+        </Report>
+    </CR:CrystalReportSource>
+
     <!-- Top bar -->
     <!-- Header Section -->
     <div class="header">
@@ -186,7 +194,7 @@
                             
                                 <div class="d-flex justify-content-end mb-4 mt-4 me-3">
                                      
-                                    <asp:Button ID="Button1" class="btn btn-dark shadow-none btn-sm" runat="server" Text="Generate Report" />
+                                    <asp:Button ID="Button1" class="btn btn-dark shadow-none btn-sm" runat="server" Text="Generate Report" OnClick="Button1_Click" />
                                 </div>
 
 

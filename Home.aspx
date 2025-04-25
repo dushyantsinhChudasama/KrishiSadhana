@@ -13,33 +13,33 @@
         <hr class="hr">
         <div class="container d-flex justify-content-around">
             <div class="category">
-                <a href="products.html">
+                <a href="Crops.aspx">
                     <img src="assets/Images/Crops.jpg" alt="Crops">
                     <p>Crops</p>
                 </a>
             </div>
             <div class="category">
-                <a href="products.html">
+                <a href="Vegeatbles.aspx">
                     <img src="assets/Images/Vegetables.jpg" alt="Vegetables">
                     <p>Vegetables</p>
                 </a>
             </div>
             <div class="category">
-                <a href="products.html">
+                <a href="Fruits.aspx">
                     <img src="assets/Images/Fruits.jpg" alt="Fruits">
                     <p>Fruits</p>
                 </a>
             </div>
             <div class="category">
-                <a href="products.html">
+                <a href="DryFruits.aspx">
                     <img src="assets/Images/DryFruits.jpg" alt="Dry fruits">
                     <p>Dry fruits</p>
                 </a>
             </div>
             <div class="category">
-                <a href="products.html">
+                <a href="Seeds.aspx">
                     <img src="assets/Images/Spices.jpg" alt="Spices">
-                    <p>Spices</p>
+                    <p>Seeds</p>
                 </a>
             </div>
         </div>
@@ -54,112 +54,43 @@
                 </div>
                 <div class="a-today">
                     <a href="sdfds">
-                        <p>View all</p>
+                        <p></p>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="container-pr d-flex">
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
+       <div class="container-pr d-flex mt-4">
+   
+           <asp:DataList ID="dataListCrops" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged" OnItemCommand="dataListCrops_ItemCommand">
+                <ItemTemplate>
+                    <div class="product-card">
+                        <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
+                        <%-- Add to wishlist code here --%>
+                        <span class="wishlist-icon"></span>
+                        <img src='<%# Eval("Image") %>' alt="Product Image" class="product-img">
+                        <div class="product-name"><%# Eval("Name") %></div>
+                        
+                        <div class="price-section">
+                            <span class="old-price">
+                                <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">
+                                ₹<%# Eval("Ori_Price") %></span>
+                            <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
+                        </div>
+                        <div class="location">
+                            <img src="assets/Images/Location.png" style="height: 25px;">
+                            <%# Eval("Origin") %>
+                        </div>
 
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
+                         <div style="text-align: center;">
+                            <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" CommandName="cmd_view"></asp:LinkButton>
+                            <br />
+                            <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" CommandName="cmd_cart"></asp:LinkButton>
+                        </div>
 
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
                     </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
+                </ItemTemplate>
+            </asp:DataList>
 
         </div>
     </div>
@@ -306,113 +237,43 @@
                 </div>
                 <div class="a-today">
                     <a href="sdfds">
-                        <p>View all</p>
+                        <p></p>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="container-pr d-flex">
+        <div class="container-pr d-flex mt-4">
+   
+           <asp:DataList ID="dlSeeds" runat="server" RepeatColumns="5" CellSpacing="10" OnSelectedIndexChanged="dataListCrops_SelectedIndexChanged" OnItemCommand="dataListCrops_ItemCommand">
+                <ItemTemplate>
+                    <div class="product-card">
+                        <span class="discount-badge"><%# Eval("Discount") %> % Off</span>
+                        <%-- Add to wishlist code here --%>
+                        <span class="wishlist-icon"></span>
+                        <img src='<%# Eval("Image") %>' alt="Product Image" class="product-img">
+                        <div class="product-name"><%# Eval("Name") %></div>
+                        
+                        <div class="price-section">
+                            <span class="old-price">
+                                <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">
+                                ₹<%# Eval("Ori_Price") %></span>
+                            <span>₹<%# Eval("Sell_Price") %>/ Per kg</span>
+                        </div>
+                        <div class="location">
+                            <img src="assets/Images/Location.png" style="height: 25px;">
+                            <%# Eval("Origin") %>
+                        </div>
 
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
+                         <div style="text-align: center;">
+                            <asp:LinkButton ID="btnView" CssClass="view-btn mb-2 w-100 " runat="server" Text="View Product" CommandArgument='<%# Eval("Id") %>' OnClick="btnView_Click" CommandName="cmd_view"></asp:LinkButton>
+                            <br />
+                            <asp:LinkButton ID="btnCart" CssClass="cart-btn w-100" runat="server" Text="Add To Cart" CommandArgument='<%# Eval("Id") %>' OnClick="btnCart_Click" CommandName="cmd_cart"></asp:LinkButton>
+                        </div>
 
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
                     </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="product-card-link">
-                <div class="product-card">
-                    <span class="discount-badge">10% Off</span>
-                    <span class="wishlist-icon"><i class="far fa-heart"></i></span>
-                    <img src="assets/Images/crop3.png" alt="Product Image" class="product-img">
-                    <div class="product-name">Product Name</div>
-                    <div class="farmer-name">Farmer Name</div>
-                    <div class="price-section">
-                        <span class="old-price">
-                            <img src="assets/Images/Rupee.png" alt="" style="height: 22px;">₹110
-                        </span>
-                        <span>₹100 / Per kg</span>
-                    </div>
-                    <div class="location">
-                        <img src="assets/Images/Location.png" style="height: 25px;">
-                        Rajkot, Gujarat
-                    </div>
-                </div>
-            </a>
+                </ItemTemplate>
+            </asp:DataList>
 
         </div>
 
